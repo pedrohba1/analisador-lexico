@@ -2,18 +2,9 @@ programa {
 real b;
 int a;
 
-se (a > b) entao {
-    real j;
-    real c;
-    c := 3;
+se (a > b){
+    
 }
-
-
-faca {
-
-
-} enquanto (a > b)
-
 
 
 }
