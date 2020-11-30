@@ -14,7 +14,7 @@ def tokenize(code):
     token_specification = [
         ('ConstReal', r'\d(\d)*\.\d(\d)*'),   
         ('ConstInt', r'\d(\d)*'), 
-        ('ConstChar', r'\'\w*\''),
+        ('ConstChar', r'\'[\w+]?\''),
         ('opAtribuicao',   r':='),           # Assignment operator
         ('PVirg',      r';'),            # Statement terminator
         ('opAdicao', r'\+'),                     # +
@@ -46,8 +46,6 @@ def tokenize(code):
         if tipo == 'ID' and value in keywords:
             if value == 'and' or value == 'or' or value == 'not':
                 tipo = 'OpLogic'  
-            elif value == 'int' or value == 'real' or value == 'char':
-                tipo = 'VAR_TYPE'
             else:
                 tipo = value.upper()
         elif tipo == 'NEWLINE':
