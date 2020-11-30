@@ -10,9 +10,8 @@ class Token(NamedTuple):
     column: int
 
 def tokenize(code):
+    keywords = {'se', 'senao', 'entao', 'enquanto', 'programa', 'real', 'int'}
     token_specification = [
-        ('Inicio',       r'/\b(programa)\b/i'),   
-        ('se',    r's/\b(se)\b/i'),    
         ('TipoInteiro',    r's/\b(int)\b/i'),
         ('ConstReal', r'\d(\d)*\.\d(\d)*'),   
         ('ConstInt', r'\d(\d)*'),         
@@ -45,7 +44,9 @@ def tokenize(code):
         tipo = mo.lastgroup
         value = mo.group()
         column = mo.start() - line_start
-        if tipo == 'NEWLINE':
+        if tipo == 'ID' and value in keywords:
+            tipo = value    
+        elif tipo == 'NEWLINE':
             line_start = mo.end()
             line_num += 1
             continue
