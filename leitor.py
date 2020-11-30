@@ -1,9 +1,7 @@
 import re
 from typing import NamedTuple
 
-file = open('codigo.nada', 'r')
-
-lines = file.readlines()
+file = open('codigo.nada', 'r').read()
 
 
 class Token(NamedTuple):
@@ -39,7 +37,7 @@ def tokenize(code):
                 tipo = 'ConstInteiro'
                 value = int(value)
         elif tipo == 'ID' and value in keywords:
-            tipo = value
+            tipo = value    
         elif tipo == 'NEWLINE':
             line_start = mo.end()
             line_num += 1
@@ -50,9 +48,12 @@ def tokenize(code):
             raise RuntimeError(f'{value!r} unexpected on line {line_num}')
         yield Token(tipo, value, line_num, column)
 
-for line in lines:
-    for token in tokenize(line):
-        print(token)
+
+
+
+
+for token in tokenize(file):
+    print(token)
 
 
 
