@@ -1,8 +1,7 @@
 import re
 from typing import NamedTuple
 
-file = open('codigo.nada', 'r').read()
-
+file = open('codigo.prog', 'r').read()
 
 class Token(NamedTuple):
     type: str
@@ -13,11 +12,27 @@ class Token(NamedTuple):
 def tokenize(code):
     keywords = {'IF', 'THEN', 'ENDIF', 'FOR', 'NEXT', 'GOSUB', 'RETURN'}
     token_specification = [
+        ('programa',       r'programa'),    # Identifiers
+        ('TipoInteiro',    r'int'),
         ('ConstNumero',     r'\d+(\.\d*)?'),  # Integer or decimal 
-        ('ASSIGN',   r':='),           # Assignment operator
-        ('END',      r';'),            # Statement terminator
+        ('opAtribuicao',   r':='),           # Assignment operator
+        ('PVirg',      r';'),            # Statement terminator
         ('ID',       r'[A-Za-z]+'),    # Identifiers
-        ('OP',       r'[+\-*/]'),      # Arithmetic operators
+        ('opAdicao', r'\+'),                     # +
+        ('opSubtracao', r'-'),                     # -
+        ('opMult', r'\*'),                     # *
+        ('opDiv', r'\/'),                      # /
+        ('AbreParentese', r'\('),            # (
+        ('FechaParentese', r'\)'),           # )
+        ('AbreChave', r'\{'),                # {
+        ('FechaChave', r'\}'),               # }
+        ('OpMaior', r'>'),               # ==
+        ('OpMenor', r'<'),
+        ('EQ', r'=='),               # ==
+        ('NE', r'!='),              # !=
+        ('LE', r'<='),              # <=
+        ('GE', r'>='),              # >=
+        ('OR', r'\|\|'),            # ||
         ('NEWLINE',  r'\n'),           # Line endings
         ('SKIP',     r'[ \t]+'),       # Skip over spaces and tabs
         ('MISMATCH', r'.'),            # Any other character
