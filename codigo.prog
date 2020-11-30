@@ -1,13 +1,19 @@
-programa {
-real b;
-int a;
-se (a > b){
-    
+programa main {
+real b_35;
+int a2;
+char teste;
+
+se (a > b) or (b <= c) entao {
+    a := 3.15
 }
+senao {
+    b := 8
+    c := 'ao'
 
-
-programa123;
-
-se123s := 12390;
+}
+ enquanto true
+    faca (
+        x := b
+    )
 
 }
