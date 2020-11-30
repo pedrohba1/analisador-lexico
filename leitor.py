@@ -12,7 +12,8 @@ class Token(NamedTuple):
 def tokenize(code):
     keywords = {'IF', 'THEN', 'ENDIF', 'FOR', 'NEXT', 'GOSUB', 'RETURN'}
     token_specification = [
-        ('programa',       r'programa'),    # Identifiers
+        ('Inicio',       r'programa'),    # Identifiers
+        ('se',    r'se'),    # Identifiers
         ('TipoInteiro',    r'int'),
         ('ConstNumero',     r'\d+(\.\d*)?'),  # Integer or decimal 
         ('opAtribuicao',   r':='),           # Assignment operator
