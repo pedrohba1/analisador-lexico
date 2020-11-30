@@ -8,7 +8,7 @@ se (a > b) or (b <= c) entao {
 }
 senao {
     b := 8
-    c := 'ao'
+    c := 'a'
 
 }
  enquanto true
