@@ -15,10 +15,11 @@ def tokenize(code):
         ('Inicio',       r'programa'),    # Identifiers
         ('se',    r'se'),    # Identifiers
         ('TipoInteiro',    r'int'),
-        ('ConstNumero',     r'\d+(\.\d*)?'),  # Integer or decimal 
+        ('ConstReal', r'\d(\d)*\.\d(\d)*'),   # FLOAT
+        ('ConstInt', r'\d(\d)*'),          # INT  # Integer or decimal 
         ('opAtribuicao',   r':='),           # Assignment operator
-        ('PVirg',      r';'),            # Statement terminator
-        ('ID',       r'[A-Za-z]+'),    # Identifiers
+        ('PVirg',      r';'),  
+        ('ID',       r'(?<!\w)[a-zA-Z]\w*'),    # Identifiers       # Statement terminator
         ('opAdicao', r'\+'),                     # +
         ('opSubtracao', r'-'),                     # -
         ('opMult', r'\*'),                     # *
@@ -45,14 +46,7 @@ def tokenize(code):
         tipo = mo.lastgroup
         value = mo.group()
         column = mo.start() - line_start
-        if tipo == 'ConstNumero':
-            if('.' in value):
-                tipo = 'ConstReal'
-                value = float(value)
-            else:
-                tipo = 'ConstInteiro'
-                value = int(value)
-        elif tipo == 'ID' and value in keywords:
+        if tipo == 'ID' and value in keywords:
             tipo = value    
         elif tipo == 'NEWLINE':
             line_start = mo.end()
