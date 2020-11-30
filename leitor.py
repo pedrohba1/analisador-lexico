@@ -10,14 +10,13 @@ class Token(NamedTuple):
     column: int
 
 def tokenize(code):
-    keywords = {'se', 'senao', 'entao', 'enquanto', 'programa', 'real', 'int'}
+    keywords = {'programa','se', 'entao', 'senao', 'enquanto', 'faca', 'para', 'int', 'real', 'char', 'or', 'and', 'not'}
     token_specification = [
-        ('TipoInteiro',    r's/\b(int)\b/i'),
         ('ConstReal', r'\d(\d)*\.\d(\d)*'),   
-        ('ConstInt', r'\d(\d)*'),         
-        ('opAtribuicao',   r':='),           
-        ('PVirg',      r';'),  
-        ('ID',       r'(?<!\w)[a-zA-Z]\w*'),    # Identifiers       # Statement terminator
+        ('ConstInt', r'\d(\d)*'), 
+        ('ConstChar', r'\'\w*\''),
+        ('opAtribuicao',   r':='),           # Assignment operator
+        ('PVirg',      r';'),            # Statement terminator
         ('opAdicao', r'\+'),                     # +
         ('opSubtracao', r'-'),                     # -
         ('opMult', r'\*'),                     # *
@@ -26,13 +25,13 @@ def tokenize(code):
         ('FechaParentese', r'\)'),           # )
         ('AbreChave', r'\{'),                # {
         ('FechaChave', r'\}'),               # }
-        ('OpMaior', r'>'),               # ==
-        ('OpMenor', r'<'),
-        ('EQ', r'=='),               # ==
-        ('NE', r'!='),              # !=
         ('LE', r'<='),              # <=
         ('GE', r'>='),              # >=
-        ('OR', r'\|\|'),            # ||
+        ('GT', r'>'),               
+        ('LT', r'<'),
+        ('NE', r'!='),              # !=
+        ('EQ', r'=='),               # ==
+        ('ID',       r'(?<!\w)[a-zA-Z]\w*'),    # Identifiers
         ('NEWLINE',  r'\n'),           # Line endings
         ('SKIP',     r'[ \t]+'),       # Skip over spaces and tabs
         ('MISMATCH', r'.'),            # Any other character
@@ -45,7 +44,12 @@ def tokenize(code):
         value = mo.group()
         column = mo.start() - line_start
         if tipo == 'ID' and value in keywords:
-            tipo = value    
+            if value == 'and' or value == 'or' or value == 'not':
+                tipo = 'OpLogic'  
+            elif value == 'int' or value == 'real' or value == 'char':
+                tipo = 'VAR_TYPE'
+            else:
+                tipo = value.upper()
         elif tipo == 'NEWLINE':
             line_start = mo.end()
             line_num += 1
@@ -62,15 +66,5 @@ def tokenize(code):
 
 for token in tokenize(file):
     print(token)
-
-
-
-
-
-
-
-
-
-
 
 
