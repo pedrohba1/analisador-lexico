@@ -3,7 +3,7 @@ real b_35;
 int a2;
 char teste;
 
-se (a > b) or (b <= c) entao {
+se (a > b) OR (b <= c) entao {
     a := 3.15
 }
 senao {
@@ -11,7 +11,7 @@ senao {
     c := 'a'
 
 }
- enquanto true
+ enquanto (true)
     faca (
         x := b
     )
