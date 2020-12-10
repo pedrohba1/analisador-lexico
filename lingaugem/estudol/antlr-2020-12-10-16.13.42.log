@@ -1,0 +1,108 @@
+2020-12-10 16:13:41:886 grammar LogManager.java:25 before: (COMBINED_GRAMMAR estudol (RULES (RULE inicio (BLOCK (ALT 'programa' ID corpo))) (RULE corpo (BLOCK (ALT AbreChave secaoVariaveis listaComandos FechaChave))) (RULE secaoVariaveis (BLOCK (ALT 'vars' ':' listDecVariavel PVirg))) (RULE listDecVariavel (BLOCK (ALT listDecVariavel VIRG varDec) (ALT varDec))) (RULE varDec (BLOCK (ALT tipos ID))) (RULE tipos (BLOCK (ALT TipotInt) (ALT TipoReal) (ALT TipoChar))) (RULE bloco (BLOCK (ALT AbreChave listaComandos FechaChave))) (RULE listaComandos (BLOCK (ALT listaComandos command) (ALT command))) (RULE command (BLOCK (ALT singleCmd PVirg) (ALT stmt))) (RULE singleCmd (BLOCK (ALT ID OPAtrib cexpr))) (RULE stmt (BLOCK (ALT SE AbreParentese cexpr FechaParentese bloco) (ALT SE AbreParentese cexpr FechaParentese bloco SENAO bloco) (ALT ENQUANTO AbreParentese cexpr FechaParentese bloco) (ALT FACA bloco ENQUANTO cexpr))) (RULE cexpr (BLOCK (ALT cexpr OPAnd cexpr) (ALT cexpr OPOr cexpr) (ALT expr OPIgual expr) (ALT expr OPMaior expr) (ALT expr OPMenor expr) (ALT expr))) (RULE expr (BLOCK (ALT expr OPMais expr) (ALT expr OPMenos expr) (ALT expr OPDiv expr) (ALT expr OPMult expr) (ALT AbreParentese cexpr FechaParentese) (ALT ID) (ALT INT) (ALT CHAR))) (RULE FLOAT (BLOCK (ALT (+ (BLOCK (ALT DIGIT))) '.' (* (BLOCK (ALT DIGIT)))))) (RULE DIGIT (BLOCK (ALT [0-9]))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE ID (BLOCK (ALT [a-z] (* (BLOCK (ALT [a-zA-Z0-9])))))) (RULE CHAR (BLOCK (ALT '\'' (BLOCK (ALT [0-9A-Za-z]) (ALT '\\' (BLOCK (ALT [a-f]) (ALT [0-9]) (ALT [1-9] [0-9]) (ALT '1' [0-2] [0-7])))) '\''))) (RULE AbreChave (BLOCK (ALT '{'))) (RULE FechaChave (BLOCK (ALT '}'))) (RULE AbreParentese (BLOCK (ALT '('))) (RULE FechaParentese (BLOCK (ALT ')'))) (RULE TipotInt (BLOCK (ALT 'INT'))) (RULE TipoReal (BLOCK (ALT 'REAL'))) (RULE TipoChar (BLOCK (ALT 'CHAR'))) (RULE PVirg (BLOCK (ALT ';'))) (RULE OPAtrib (BLOCK (ALT ':='))) (RULE SE (BLOCK (ALT 'SE'))) (RULE SENAO (BLOCK (ALT 'SENAO'))) (RULE ENQUANTO (BLOCK (ALT 'ENQUANTO'))) (RULE FACA (BLOCK (ALT 'FACA'))) (RULE VIRG (BLOCK (ALT ','))) (RULE OPAnd (BLOCK (ALT 'AND'))) (RULE OPOr (BLOCK (ALT 'OR'))) (RULE OPMaior (BLOCK (ALT '>'))) (RULE OPMenor (BLOCK (ALT '<'))) (RULE OPIgual (BLOCK (ALT '=='))) (RULE OPMais (BLOCK (ALT '+'))) (RULE OPDiv (BLOCK (ALT '/'))) (RULE OPMenos (BLOCK (ALT '-'))) (RULE OPMult (BLOCK (ALT '*'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2020-12-10 16:13:41:913 grammar LogManager.java:25 after: (COMBINED_GRAMMAR estudol (RULES (RULE inicio (BLOCK (ALT 'programa' ID corpo))) (RULE corpo (BLOCK (ALT AbreChave secaoVariaveis listaComandos FechaChave))) (RULE secaoVariaveis (BLOCK (ALT 'vars' ':' listDecVariavel PVirg))) (RULE listDecVariavel (BLOCK (ALT listDecVariavel VIRG varDec) (ALT varDec))) (RULE varDec (BLOCK (ALT tipos ID))) (RULE tipos (BLOCK (ALT (SET TipotInt TipoReal TipoChar)))) (RULE bloco (BLOCK (ALT AbreChave listaComandos FechaChave))) (RULE listaComandos (BLOCK (ALT listaComandos command) (ALT command))) (RULE command (BLOCK (ALT singleCmd PVirg) (ALT stmt))) (RULE singleCmd (BLOCK (ALT ID OPAtrib cexpr))) (RULE stmt (BLOCK (ALT SE AbreParentese cexpr FechaParentese bloco) (ALT SE AbreParentese cexpr FechaParentese bloco SENAO bloco) (ALT ENQUANTO AbreParentese cexpr FechaParentese bloco) (ALT FACA bloco ENQUANTO cexpr))) (RULE cexpr (BLOCK (ALT cexpr OPAnd cexpr) (ALT cexpr OPOr cexpr) (ALT expr OPIgual expr) (ALT expr OPMaior expr) (ALT expr OPMenor expr) (ALT expr))) (RULE expr (BLOCK (ALT expr OPMais expr) (ALT expr OPMenos expr) (ALT expr OPDiv expr) (ALT expr OPMult expr) (ALT AbreParentese cexpr FechaParentese) (ALT ID) (ALT INT) (ALT CHAR))) (RULE FLOAT (BLOCK (ALT (+ (BLOCK (ALT DIGIT))) '.' (* (BLOCK (ALT DIGIT)))))) (RULE DIGIT (BLOCK (ALT [0-9]))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE ID (BLOCK (ALT [a-z] (* (BLOCK (ALT [a-zA-Z0-9])))))) (RULE CHAR (BLOCK (ALT '\'' (BLOCK (ALT [0-9A-Za-z]) (ALT '\\' (BLOCK (ALT [a-f]) (ALT [0-9]) (ALT [1-9] [0-9]) (ALT '1' [0-2] [0-7])))) '\''))) (RULE AbreChave (BLOCK (ALT '{'))) (RULE FechaChave (BLOCK (ALT '}'))) (RULE AbreParentese (BLOCK (ALT '('))) (RULE FechaParentese (BLOCK (ALT ')'))) (RULE TipotInt (BLOCK (ALT 'INT'))) (RULE TipoReal (BLOCK (ALT 'REAL'))) (RULE TipoChar (BLOCK (ALT 'CHAR'))) (RULE PVirg (BLOCK (ALT ';'))) (RULE OPAtrib (BLOCK (ALT ':='))) (RULE SE (BLOCK (ALT 'SE'))) (RULE SENAO (BLOCK (ALT 'SENAO'))) (RULE ENQUANTO (BLOCK (ALT 'ENQUANTO'))) (RULE FACA (BLOCK (ALT 'FACA'))) (RULE VIRG (BLOCK (ALT ','))) (RULE OPAnd (BLOCK (ALT 'AND'))) (RULE OPOr (BLOCK (ALT 'OR'))) (RULE OPMaior (BLOCK (ALT '>'))) (RULE OPMenor (BLOCK (ALT '<'))) (RULE OPIgual (BLOCK (ALT '=='))) (RULE OPMais (BLOCK (ALT '+'))) (RULE OPDiv (BLOCK (ALT '/'))) (RULE OPMenos (BLOCK (ALT '-'))) (RULE OPMult (BLOCK (ALT '*'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2020-12-10 16:13:41:942 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR estudol (RULES (RULE inicio (BLOCK (ALT 'programa' ID corpo))) (RULE corpo (BLOCK (ALT AbreChave secaoVariaveis listaComandos FechaChave))) (RULE secaoVariaveis (BLOCK (ALT 'vars' ':' listDecVariavel PVirg))) (RULE listDecVariavel (BLOCK (ALT listDecVariavel VIRG varDec) (ALT varDec))) (RULE varDec (BLOCK (ALT tipos ID))) (RULE tipos (BLOCK (ALT (SET TipotInt TipoReal TipoChar)))) (RULE bloco (BLOCK (ALT AbreChave listaComandos FechaChave))) (RULE listaComandos (BLOCK (ALT listaComandos command) (ALT command))) (RULE command (BLOCK (ALT singleCmd PVirg) (ALT stmt))) (RULE singleCmd (BLOCK (ALT ID OPAtrib cexpr))) (RULE stmt (BLOCK (ALT SE AbreParentese cexpr FechaParentese bloco) (ALT SE AbreParentese cexpr FechaParentese bloco SENAO bloco) (ALT ENQUANTO AbreParentese cexpr FechaParentese bloco) (ALT FACA bloco ENQUANTO cexpr))) (RULE cexpr (BLOCK (ALT cexpr OPAnd cexpr) (ALT cexpr OPOr cexpr) (ALT expr OPIgual expr) (ALT expr OPMaior expr) (ALT expr OPMenor expr) (ALT expr))) (RULE expr (BLOCK (ALT expr OPMais expr) (ALT expr OPMenos expr) (ALT expr OPDiv expr) (ALT expr OPMult expr) (ALT AbreParentese cexpr FechaParentese) (ALT ID) (ALT INT) (ALT CHAR)))))
+2020-12-10 16:13:41:943 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR estudolLexer (RULES (RULE T__0 (BLOCK (ALT 'programa'))) (RULE T__1 (BLOCK (ALT 'vars'))) (RULE T__2 (BLOCK (ALT ':'))) (RULE FLOAT (BLOCK (ALT (+ (BLOCK (ALT DIGIT))) '.' (* (BLOCK (ALT DIGIT)))))) (RULE DIGIT (BLOCK (ALT [0-9]))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE ID (BLOCK (ALT [a-z] (* (BLOCK (ALT [a-zA-Z0-9])))))) (RULE CHAR (BLOCK (ALT '\'' (BLOCK (ALT [0-9A-Za-z]) (ALT '\\' (BLOCK (ALT [a-f]) (ALT [0-9]) (ALT [1-9] [0-9]) (ALT '1' [0-2] [0-7])))) '\''))) (RULE AbreChave (BLOCK (ALT '{'))) (RULE FechaChave (BLOCK (ALT '}'))) (RULE AbreParentese (BLOCK (ALT '('))) (RULE FechaParentese (BLOCK (ALT ')'))) (RULE TipotInt (BLOCK (ALT 'INT'))) (RULE TipoReal (BLOCK (ALT 'REAL'))) (RULE TipoChar (BLOCK (ALT 'CHAR'))) (RULE PVirg (BLOCK (ALT ';'))) (RULE OPAtrib (BLOCK (ALT ':='))) (RULE SE (BLOCK (ALT 'SE'))) (RULE SENAO (BLOCK (ALT 'SENAO'))) (RULE ENQUANTO (BLOCK (ALT 'ENQUANTO'))) (RULE FACA (BLOCK (ALT 'FACA'))) (RULE VIRG (BLOCK (ALT ','))) (RULE OPAnd (BLOCK (ALT 'AND'))) (RULE OPOr (BLOCK (ALT 'OR'))) (RULE OPMaior (BLOCK (ALT '>'))) (RULE OPMenor (BLOCK (ALT '<'))) (RULE OPIgual (BLOCK (ALT '=='))) (RULE OPMais (BLOCK (ALT '+'))) (RULE OPDiv (BLOCK (ALT '/'))) (RULE OPMenos (BLOCK (ALT '-'))) (RULE OPMult (BLOCK (ALT '*'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2020-12-10 16:13:42:333 left-recursion LogManager.java:25 listDecVariavel
+    :   ( {} varDec<tokenIndex=55> 
+        )
+        (
+          {precpred(_ctx, 2)}?<p=2> VIRG<tokenIndex=49> varDec<tokenIndex=51>
+        )*
+    ;
+2020-12-10 16:13:42:357 grammar LogManager.java:25 added: (RULE listDecVariavel (BLOCK (ALT (BLOCK (ALT {} (varDec (ELEMENT_OPTIONS (= tokenIndex 55))))) (* (BLOCK (ALT ({precpred(_ctx, 2)}? (ELEMENT_OPTIONS (= p 2))) (VIRG (ELEMENT_OPTIONS (= tokenIndex 49))) (varDec (ELEMENT_OPTIONS (= tokenIndex 51)))))))))
+2020-12-10 16:13:42:363 left-recursion LogManager.java:25 listaComandos
+    :   ( {} command<tokenIndex=102> 
+        )
+        (
+          {precpred(_ctx, 2)}?<p=2> command<tokenIndex=98>
+        )*
+    ;
+2020-12-10 16:13:42:365 grammar LogManager.java:25 added: (RULE listaComandos (BLOCK (ALT (BLOCK (ALT {} (command (ELEMENT_OPTIONS (= tokenIndex 102))))) (* (BLOCK (ALT ({precpred(_ctx, 2)}? (ELEMENT_OPTIONS (= p 2))) (command (ELEMENT_OPTIONS (= tokenIndex 98)))))))))
+2020-12-10 16:13:42:371 left-recursion LogManager.java:25 cexpr
+    :   ( {} expr<tokenIndex=200> OPIgual<tokenIndex=202> expr<tokenIndex=204> 
+        | expr<tokenIndex=207> OPMaior<tokenIndex=209> expr<tokenIndex=211> 
+        | expr<tokenIndex=214> OPMenor<tokenIndex=216> expr<tokenIndex=218> 
+        | expr<tokenIndex=221> 
+        )
+        (
+          {precpred(_ctx, 6)}?<p=6> OPAnd<tokenIndex=188> cexpr<tokenIndex=190,p=7>
+                  | {precpred(_ctx, 5)}?<p=5> OPOr<tokenIndex=195> cexpr<tokenIndex=197,p=6>
+        )*
+    ;
+2020-12-10 16:13:42:375 grammar LogManager.java:25 added: (RULE cexpr (BLOCK (ALT (BLOCK (ALT {} (expr (ELEMENT_OPTIONS (= tokenIndex 200))) (OPIgual (ELEMENT_OPTIONS (= tokenIndex 202))) (expr (ELEMENT_OPTIONS (= tokenIndex 204)))) (ALT (expr (ELEMENT_OPTIONS (= tokenIndex 207))) (OPMaior (ELEMENT_OPTIONS (= tokenIndex 209))) (expr (ELEMENT_OPTIONS (= tokenIndex 211)))) (ALT (expr (ELEMENT_OPTIONS (= tokenIndex 214))) (OPMenor (ELEMENT_OPTIONS (= tokenIndex 216))) (expr (ELEMENT_OPTIONS (= tokenIndex 218)))) (ALT (expr (ELEMENT_OPTIONS (= tokenIndex 221))))) (* (BLOCK (ALT ({precpred(_ctx, 6)}? (ELEMENT_OPTIONS (= p 6))) (OPAnd (ELEMENT_OPTIONS (= tokenIndex 188))) (cexpr (ELEMENT_OPTIONS (= tokenIndex 190) (= p 7)))) (ALT ({precpred(_ctx, 5)}? (ELEMENT_OPTIONS (= p 5))) (OPOr (ELEMENT_OPTIONS (= tokenIndex 195))) (cexpr (ELEMENT_OPTIONS (= tokenIndex 197) (= p 6)))))))))
+2020-12-10 16:13:42:379 left-recursion LogManager.java:25 expr
+    :   ( {} AbreParentese<tokenIndex=256> cexpr<tokenIndex=258> FechaParentese<tokenIndex=260> 
+        | ID<tokenIndex=263> 
+        | INT<tokenIndex=266> 
+        | CHAR<tokenIndex=269> 
+        )
+        (
+          {precpred(_ctx, 8)}?<p=8> OPMais<tokenIndex=230> expr<tokenIndex=232,p=9>
+                  | {precpred(_ctx, 7)}?<p=7> OPMenos<tokenIndex=237> expr<tokenIndex=239,p=8>
+                  | {precpred(_ctx, 6)}?<p=6> OPDiv<tokenIndex=244> expr<tokenIndex=246,p=7>
+                  | {precpred(_ctx, 5)}?<p=5> OPMult<tokenIndex=251> expr<tokenIndex=253,p=6>
+        )*
+    ;
+2020-12-10 16:13:42:386 grammar LogManager.java:25 added: (RULE expr (BLOCK (ALT (BLOCK (ALT {} (AbreParentese (ELEMENT_OPTIONS (= tokenIndex 256))) (cexpr (ELEMENT_OPTIONS (= tokenIndex 258))) (FechaParentese (ELEMENT_OPTIONS (= tokenIndex 260)))) (ALT (ID (ELEMENT_OPTIONS (= tokenIndex 263)))) (ALT (INT (ELEMENT_OPTIONS (= tokenIndex 266)))) (ALT (CHAR (ELEMENT_OPTIONS (= tokenIndex 269))))) (* (BLOCK (ALT ({precpred(_ctx, 8)}? (ELEMENT_OPTIONS (= p 8))) (OPMais (ELEMENT_OPTIONS (= tokenIndex 230))) (expr (ELEMENT_OPTIONS (= tokenIndex 232) (= p 9)))) (ALT ({precpred(_ctx, 7)}? (ELEMENT_OPTIONS (= p 7))) (OPMenos (ELEMENT_OPTIONS (= tokenIndex 237))) (expr (ELEMENT_OPTIONS (= tokenIndex 239) (= p 8)))) (ALT ({precpred(_ctx, 6)}? (ELEMENT_OPTIONS (= p 6))) (OPDiv (ELEMENT_OPTIONS (= tokenIndex 244))) (expr (ELEMENT_OPTIONS (= tokenIndex 246) (= p 7)))) (ALT ({precpred(_ctx, 5)}? (ELEMENT_OPTIONS (= p 5))) (OPMult (ELEMENT_OPTIONS (= tokenIndex 251))) (expr (ELEMENT_OPTIONS (= tokenIndex 253) (= p 6)))))))))
+2020-12-10 16:13:42:389 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, T__2=3, FLOAT=4, DIGIT=5, INT=6, ID=7, CHAR=8, AbreChave=9, FechaChave=10, AbreParentese=11, FechaParentese=12, TipotInt=13, TipoReal=14, TipoChar=15, PVirg=16, OPAtrib=17, SE=18, SENAO=19, ENQUANTO=20, FACA=21, VIRG=22, OPAnd=23, OPOr=24, OPMaior=25, OPMenor=26, OPIgual=27, OPMais=28, OPDiv=29, OPMenos=30, OPMult=31, WS=32}
+2020-12-10 16:13:42:390 semantics LogManager.java:25 strings={'programa'=1, 'vars'=2, ':'=3, '{'=9, '}'=10, '('=11, ')'=12, 'INT'=13, 'REAL'=14, 'CHAR'=15, ';'=16, ':='=17, 'SE'=18, 'SENAO'=19, 'ENQUANTO'=20, 'FACA'=21, ','=22, 'AND'=23, 'OR'=24, '>'=25, '<'=26, '=='=27, '+'=28, '/'=29, '-'=30, '*'=31}
+2020-12-10 16:13:42:404 LL1 LogManager.java:25 
+DECISION 0 in rule listDecVariavel
+2020-12-10 16:13:42:404 LL1 LogManager.java:25 look=[null, 16]
+2020-12-10 16:13:42:404 LL1 LogManager.java:25 LL(1)? false
+2020-12-10 16:13:42:404 LL1 LogManager.java:25 
+DECISION 1 in rule listaComandos
+2020-12-10 16:13:42:404 LL1 LogManager.java:25 look=[null, 10]
+2020-12-10 16:13:42:404 LL1 LogManager.java:25 LL(1)? false
+2020-12-10 16:13:42:404 LL1 LogManager.java:25 
+DECISION 2 in rule command
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 look=[7, {18, 20..21}]
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 LL(1)? true
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 
+DECISION 3 in rule stmt
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 look=[18, 18, 20, 21]
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 LL(1)? false
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 
+DECISION 4 in rule cexpr
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 look=[{6..8, 11}, {6..8, 11}, {6..8, 11}, {6..8, 11}]
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 LL(1)? false
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 
+DECISION 5 in rule cexpr
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 look=[null, null]
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 LL(1)? false
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 
+DECISION 6 in rule cexpr
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 look=[null, null]
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 LL(1)? false
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 
+DECISION 7 in rule expr
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 look=[11, 7, 6, 8]
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 LL(1)? true
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 
+DECISION 8 in rule expr
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 look=[null, null, null, null]
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 LL(1)? false
+2020-12-10 16:13:42:405 LL1 LogManager.java:25 
+DECISION 9 in rule expr
+2020-12-10 16:13:42:406 LL1 LogManager.java:25 look=[null, null]
+2020-12-10 16:13:42:406 LL1 LogManager.java:25 LL(1)? false
+2020-12-10 16:13:42:431 action-translator LogManager.java:25 translate 
+2020-12-10 16:13:42:432 action-translator LogManager.java:25 translate precpred(_ctx, 2)
+2020-12-10 16:13:42:434 action-translator LogManager.java:25 translate precpred(_ctx, 2)
+2020-12-10 16:13:42:437 action-translator LogManager.java:25 translate 
+2020-12-10 16:13:42:437 action-translator LogManager.java:25 translate precpred(_ctx, 2)
+2020-12-10 16:13:42:437 action-translator LogManager.java:25 translate precpred(_ctx, 2)
+2020-12-10 16:13:42:443 action-translator LogManager.java:25 translate 
+2020-12-10 16:13:42:443 action-translator LogManager.java:25 translate precpred(_ctx, 6)
+2020-12-10 16:13:42:444 action-translator LogManager.java:25 translate precpred(_ctx, 5)
+2020-12-10 16:13:42:444 action-translator LogManager.java:25 translate precpred(_ctx, 6)
+2020-12-10 16:13:42:444 action-translator LogManager.java:25 translate precpred(_ctx, 5)
+2020-12-10 16:13:42:445 action-translator LogManager.java:25 translate 
+2020-12-10 16:13:42:446 action-translator LogManager.java:25 translate precpred(_ctx, 8)
+2020-12-10 16:13:42:447 action-translator LogManager.java:25 translate precpred(_ctx, 7)
+2020-12-10 16:13:42:447 action-translator LogManager.java:25 translate precpred(_ctx, 6)
+2020-12-10 16:13:42:447 action-translator LogManager.java:25 translate precpred(_ctx, 5)
+2020-12-10 16:13:42:447 action-translator LogManager.java:25 translate precpred(_ctx, 8)
+2020-12-10 16:13:42:448 action-translator LogManager.java:25 translate precpred(_ctx, 7)
+2020-12-10 16:13:42:448 action-translator LogManager.java:25 translate precpred(_ctx, 6)
+2020-12-10 16:13:42:448 action-translator LogManager.java:25 translate precpred(_ctx, 5)
