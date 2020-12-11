@@ -2,13 +2,13 @@ grammar estudol;
 
 //regras que começam com letra minúscula são as regras de parser
 
-inicio: 'programa' ID corpo 
+inicio: PROGRAMA ID corpo 
         ;
 corpo:  AbreChave secaoVariaveis listaComandos  FechaChave
         ; 
 
 
-secaoVariaveis: 'vars' ':'  listDecVariavel  PVirg
+secaoVariaveis: VARS Doispontos  listDecVariavel  PVirg
                 ;
 
 listDecVariavel:    listDecVariavel VIRG varDec 
@@ -59,12 +59,10 @@ expr:   expr OPMais expr
         |FLOAT
         ;
 
-
-
 //regras que começam com letra maiúscula são regras do lexer
 INT: [0-9]+;
 DIGIT: [0-9];
-FLOAT: DIGIT+ DOT DIGIT*;
+FLOAT: DIGIT+  DIGIT*;
 DOT: '.';
 ID: [a-z][a-zA-Z0-9]*;
 CHAR: '\''([0-9A-Za-z]|'\\'([a-f]|[0-9]|[1-9][0-9]|'1'[0-2][0-7]))'\'';
@@ -72,6 +70,9 @@ AbreChave: '{';
 FechaChave : '}';
 AbreParentese: '(';
 FechaParentese: ')';
+PROGRAMA: 'PROGRAMA';
+VARS: 'VARS';
+Doispontos: ':';
 TipotInt : 'INT';
 TipoReal: 'REAL';
 TipoChar: 'CHAR';
