@@ -10,12 +10,14 @@ class Token(NamedTuple):
     column: int
 
 def tokenize(code):
-    keywords = {'programa','se', 'entao', 'senao', 'enquanto', 'faca', 'para', 'int', 'real', 'char', 'OR', 'AND', 'NOT'}
+    keywords = {'PROGRAMA','SE', 'ENTAO', 'SENAO', 'ENQUANTO', 'FACA',  'INT', 'REAL', 'CHAR', 'OR', 'AND', 'NOT'}
     token_specification = [
         ('ConstReal', r'\d(\d)*\.\d(\d)*'),   
         ('ConstInt', r'\d(\d)*'), 
+        ('VARS', r'VARS'),
         ('ConstChar', r'\'[\w+]?\''),
-        ('opAtribuicao',   r':='),          
+        ('opAtribuicao',   r':='), 
+        ('DoisPontos', r':'),
          ('virg',      r','),           
         ('PVirg',      r';'),           
         ('opAdicao', r'\+'),                    
