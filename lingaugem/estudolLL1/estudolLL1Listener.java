@@ -57,16 +57,6 @@ public interface estudolLL1Listener extends ParseTreeListener {
 	 */
 	void exitListDecVariavel1(estudolLL1Parser.ListDecVariavel1Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link estudolLL1Parser#bloco}.
-	 * @param ctx the parse tree
-	 */
-	void enterBloco(estudolLL1Parser.BlocoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link estudolLL1Parser#bloco}.
-	 * @param ctx the parse tree
-	 */
-	void exitBloco(estudolLL1Parser.BlocoContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link estudolLL1Parser#listaComandos}.
 	 * @param ctx the parse tree
 	 */
@@ -117,6 +107,16 @@ public interface estudolLL1Listener extends ParseTreeListener {
 	 */
 	void exitStmt(estudolLL1Parser.StmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link estudolLL1Parser#bloco}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloco(estudolLL1Parser.BlocoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link estudolLL1Parser#bloco}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloco(estudolLL1Parser.BlocoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link estudolLL1Parser#parametroSe}.
 	 * @param ctx the parse tree
 	 */
@@ -136,6 +136,16 @@ public interface estudolLL1Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCexpr(estudolLL1Parser.CexprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link estudolLL1Parser#cexpr0}.
+	 * @param ctx the parse tree
+	 */
+	void enterCexpr0(estudolLL1Parser.Cexpr0Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link estudolLL1Parser#cexpr0}.
+	 * @param ctx the parse tree
+	 */
+	void exitCexpr0(estudolLL1Parser.Cexpr0Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link estudolLL1Parser#cexpr1}.
 	 * @param ctx the parse tree

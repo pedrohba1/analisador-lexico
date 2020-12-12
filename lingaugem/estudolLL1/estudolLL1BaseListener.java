@@ -75,18 +75,6 @@ public class estudolLL1BaseListener implements estudolLL1Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBloco(estudolLL1Parser.BlocoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBloco(estudolLL1Parser.BlocoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterListaComandos(estudolLL1Parser.ListaComandosContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -147,6 +135,18 @@ public class estudolLL1BaseListener implements estudolLL1Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBloco(estudolLL1Parser.BlocoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBloco(estudolLL1Parser.BlocoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterParametroSe(estudolLL1Parser.ParametroSeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -166,6 +166,18 @@ public class estudolLL1BaseListener implements estudolLL1Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCexpr(estudolLL1Parser.CexprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCexpr0(estudolLL1Parser.Cexpr0Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCexpr0(estudolLL1Parser.Cexpr0Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

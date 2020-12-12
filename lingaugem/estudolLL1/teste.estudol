@@ -1,20 +1,8 @@
 PROGRAMA main {
     VARS : REAL ab, INT bc, INT cd;
-    a := 4;
-    c := a+bd;
 
-    SE (312) {
-        a:= (1+2)/ (3+2);
-    } 
-    SENAO {
-        a:= (121312098);
-    }
 
-    ENQUANTO( ab > bc)  {
-        teste:= (30)*(1);
-    }
+    a:= 3+(3*3)+4;
 
-       ENQUANTO( ab > bc)  {
-        teste:= (30)*(1);
-    }
+
 }
