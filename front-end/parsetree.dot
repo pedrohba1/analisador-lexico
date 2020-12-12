@@ -1,0 +1,11 @@
+digraph astgraph {
+  node [shape=none, fontsize=12, fontname="Courier", height=.1];
+  ranksep=.3;
+  edge [arrowsize=.5]
+
+  node1 [label="inicio"]
+  node2 [label="PROGRAMA"]
+  node1 -> node2
+  node3 [label="main"]
+  node1 -> node3
+}
