@@ -1,6 +1,5 @@
 
-from tokens import PROGRAMA, SE, ENTAO, SENAO, ENQUANTO, FACA, INT, REAL, CHAR, OR, AND, NOT, ID
-
+from tokens import *
 class Node(object):
     def __init__(self, name):
         self.name = name
@@ -59,7 +58,50 @@ class Parser:
         if token.type == PROGRAMA:
             self.eat(PROGRAMA)
             self.eat(ID)
+            self.corpo()
         self.current_node = _save
+
+
+    def corpo(self):
+        node = RuleNode('corpo')
+        if self.root is None:
+            self.root = node
+        else:
+            self.current_node.add(node)
+            
+        _save = self.current_node
+        self.current_node = node
+
+        token = self.current_token
+        if token.type == AbreChave:
+            self.eat(AbreChave)
+            self.secaoVariaveis()
+            self.eat(FechaChave)
+        self.current_node = _save
+
+    def secaoVariaveis(self):
+        node = RuleNode('secaoVariaveis')
+        if self.root is None:
+            self.root = node
+        else:
+            self.current_node.add(node)
+            
+        _save = self.current_node
+        self.current_node = node
+
+        token = self.current_token
+        self.eat(VARS)
+        self.eat(DoisPontos)
+        while True:
+            if self.current_token.type in (INT,REAL,CHAR):
+                self.eat(self.current_token.type)
+                self.eat(ID)
+                if self.current_token.type == PVirg:
+                    break
+                self.eat(VIRG)
+        self.eat(PVirg)
+        self.current_node = _save
+
 
     def parse(self):
         self.inicio()

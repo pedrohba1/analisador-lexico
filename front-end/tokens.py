@@ -1,4 +1,6 @@
-PROGRAMA, SE, ENTAO, SENAO, ENQUANTO, FACA, INT, REAL, CHAR, OR, AND, NOT,ID= (
+VARS, DoisPontos,PROGRAMA, SE, ENTAO, SENAO, ENQUANTO, FACA, INT, REAL, CHAR, OR, AND, NOT,ID, PVirg, AbreChave, EOF, FechaChave, VIRG= (
+    'VARS',
+    'DoisPontos',
     'PROGRAMA',
     'SE', 
     'ENTAO',
@@ -11,4 +13,10 @@ PROGRAMA, SE, ENTAO, SENAO, ENQUANTO, FACA, INT, REAL, CHAR, OR, AND, NOT,ID= (
     'OR',
     'AND',
     'NOT',
-    'ID')
+    'ID',
+    'PVirg',
+    'AbreChave',
+    'EOF',
+    'FechaChave',
+    'VIRG'
+    )

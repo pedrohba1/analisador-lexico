@@ -1,1 +1,4 @@
-PROGRAMA main 
+PROGRAMA main {
+    VARS : INT a, REAL b;
+
+}

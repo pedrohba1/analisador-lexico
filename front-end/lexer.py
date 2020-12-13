@@ -28,7 +28,7 @@ class Lexer:
             ('ConstChar', r'\'[\w+]?\''),
             ('opAtribuicao',   r':='), 
             ('DoisPontos', r':'),
-            ('virg',      r','),           
+            ('VIRG',      r','),           
             ('PVirg',      r';'),           
             ('opAdicao', r'\+'),                    
             ('opSubtracao', r'-'),                   
