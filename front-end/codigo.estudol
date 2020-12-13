@@ -1,4 +1,4 @@
 PROGRAMA main {
-    VARS : INT a, REAL b;
+        VARS : REAL ab, INT a, CHAR oiuaf;
 
 }

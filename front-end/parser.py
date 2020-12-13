@@ -92,15 +92,58 @@ class Parser:
         token = self.current_token
         self.eat(VARS)
         self.eat(DoisPontos)
-        while True:
-            if self.current_token.type in (INT,REAL,CHAR):
-                self.eat(self.current_token.type)
-                self.eat(ID)
-                if self.current_token.type == PVirg:
-                    break
-                self.eat(VIRG)
+        # while True:
+        #     if self.current_token.type in (INT,REAL,CHAR):
+        #         self.eat(self.current_token.type)
+        #         self.eat(ID)
+        #         if self.current_token.type == PVirg:
+        #             break
+        self.listDecVariavel()
         self.eat(PVirg)
         self.current_node = _save
+
+    def listDecVariavel(self):
+        node = RuleNode('listDecVariavel')
+        if self.root is None:
+            self.root = node
+        else:
+            self.current_node.add(node)
+            
+        _save = self.current_node
+        self.current_node = node
+
+
+        token = self.current_token
+        if token.type in (INT,REAL,CHAR):
+            self.eat(token.type)
+            self.eat(ID)
+            self.listDecVariavel1()
+        # while True:
+        #     if self.current_token.type in (INT,REAL,CHAR):
+        #         self.eat(self.current_token.type)
+        #         self.eat(ID)
+        #         if self.current_token.type == PVirg:
+        #             break
+
+    def listDecVariavel1(self):
+        node = RuleNode('listDecVariave1')
+        if self.root is None:
+            self.root = node
+        else:
+            self.current_node.add(node)
+            
+        _save = self.current_node
+        self.current_node = node
+
+        if self.current_token.type == VIRG:
+            self.eat(VIRG)
+            self.eat(self.current_token.type)
+            self.eat(ID)
+            self.listDecVariavel1()
+            self.current_node = _save
+        else: 
+            self.current_node = _save
+
 
 
     def parse(self):

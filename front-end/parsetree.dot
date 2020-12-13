@@ -20,16 +20,30 @@ digraph astgraph {
   node6 -> node8
   node9 [label=":"]
   node6 -> node9
-  node10 [label="INT"]
+  node10 [label="listDecVariavel"]
   node6 -> node10
-  node11 [label="a"]
-  node6 -> node11
-  node12 [label=","]
-  node6 -> node12
-  node13 [label="REAL"]
-  node6 -> node13
-  node14 [label="b"]
-  node6 -> node14
-  node15 [label=";"]
-  node6 -> node15
+  node11 [label="REAL"]
+  node10 -> node11
+  node12 [label="ab"]
+  node10 -> node12
+  node13 [label="listDecVariave1"]
+  node10 -> node13
+  node14 [label=";"]
+  node10 -> node14
+  node15 [label=","]
+  node13 -> node15
+  node16 [label="INT"]
+  node13 -> node16
+  node17 [label="a"]
+  node13 -> node17
+  node18 [label="listDecVariave1"]
+  node13 -> node18
+  node19 [label=","]
+  node18 -> node19
+  node20 [label="CHAR"]
+  node18 -> node20
+  node21 [label="oiuaf"]
+  node18 -> node21
+  node22 [label="listDecVariave1"]
+  node18 -> node22
 }
