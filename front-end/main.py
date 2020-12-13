@@ -4,6 +4,8 @@ from parsetreevisualizer import *
 
 lex =  Lexer('codigo.estudol')
 
+# for token in lex.tokens:
+#     print(token)
 parser = Parser(lex.tokens)
 viz = ParseTreeVisualizer(parser)
 content = viz.gendot()

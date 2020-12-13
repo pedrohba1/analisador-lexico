@@ -104,6 +104,12 @@ class Parser:
         self.current_node = _save
 
     def listDecVariavel(self):
+        """
+        listDecVariavel:  TipoInt ID listDecVariavel1 
+                |   TipoReal ID listDecVariavel1 
+                |   TipoChar ID listDecVariavel1
+                ;
+        """
         node = RuleNode('listDecVariavel')
         if self.root is None:
             self.root = node
@@ -120,6 +126,14 @@ class Parser:
 
 
     def listDecVariavel1(self):
+        """
+        listDecVariavel1:  VIRG TipoInt ID listDecVariavel1
+                |   VIRG  TipoReal ID  listDecVariavel1 
+                |   VIRG  TipoChar ID  listDecVariavel1 
+                |   //ε
+                ;
+        """
+
         node = RuleNode('listDecVariave1')
         if self.root is None:
             self.root = node
@@ -157,7 +171,11 @@ class Parser:
 
     def stmt(self):
         """
-        stmt: assign_stmt | //vazio
+        stmt: assign_stmt 
+        | if_then_stmt
+        | do_while_stmt
+        | while_stmt
+        |//vazio
         """
         node = RuleNode('stmt')
         self.current_node.add(node)
@@ -192,14 +210,59 @@ class Parser:
     
     def expr(self):
         """
-        expr: ConstInt
+        expr: term OPMais term | term OPMenos term;
         """
         node = RuleNode('expr')
         self.current_node.add(node)
         _save = self.current_node
         self.current_node = node
-        self.eat(ConstInt)
+        self.term()
+        if self.current_token.type in (OPMais, OPMenos):
+            self.eat(self.current_token.type)
+            self.term()
+        self.current_node = _save
+
+
+
+    def term(self):
+        """
+        term: fator OPMult fator | fator OPDiv fator;
+        """
+        node = RuleNode('term')
+        self.current_node.add(node)
+        _save = self.current_node
         self.current_node = node
+        self.fator()
+        if self.current_token.type in (OPMult, OPDiv):
+            self.eat(self.current_token.type)
+            self.fator()
+        self.current_node = _save
+
+    
+
+    def fator(self):
+        """
+        fator: OPMais fator
+            | OPMenos fator
+            | INT
+            | REAL
+            | AbreParentese expr FechaParentese
+            | ID
+        """
+        node = RuleNode('fator')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        if self.current_token.type in (OPMais, OPMenos):
+            self.eat(self.current_token.type)
+            self.fator()
+        elif self.current_token.type in (ConstInt, ConstReal,ID):
+            self.eat(self.current_token.type)
+        elif self.current_token.type == AbreParentese:
+            self.eat(AbreParentese)
+            self.expr()
+            self.eat(FechaParentese)
+        self.curret_node = _save
 
 
     def parse(self):

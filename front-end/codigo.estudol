@@ -1,6 +1,7 @@
 PROGRAMA main {
     VARS : REAL ab, INT a, CHAR oiuaf;
-    a := 0;
+    a := (3+5)*4;
 
-    b:= 1;
+    b := (3+5)*4;
+
 }

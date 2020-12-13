@@ -1,4 +1,4 @@
-VARS, DoisPontos,PROGRAMA, SE, ENTAO, SENAO, ENQUANTO, FACA, INT, REAL, CHAR, OR, AND, NOT,ID, PVirg, AbreChave, EOF, FechaChave, VIRG, opAtribuicao, ConstInt= (
+VARS, DoisPontos,PROGRAMA, SE, ENTAO, SENAO, ENQUANTO, FACA, INT, REAL, CHAR, OR, AND, NOT,ID, PVirg, AbreChave, EOF, FechaChave, VIRG, opAtribuicao, ConstInt, OPMais, OPMenos, OPMult, OPDiv, AbreParentese, FechaParentese= (
     'VARS',
     'DoisPontos',
     'PROGRAMA',
@@ -20,5 +20,13 @@ VARS, DoisPontos,PROGRAMA, SE, ENTAO, SENAO, ENQUANTO, FACA, INT, REAL, CHAR, OR
     'FechaChave',
     'VIRG',
     'opAtribuicao',
-    'ConstInt'
+    'ConstInt',
+    'OPMais',
+    'OPMenos',
+    'OPMult',
+    'OPDiv',
+    'AbreParentese',
+    'FechaParentese'
     )
+
+ConstReal = 'ConstReal'
