@@ -47,6 +47,7 @@ class Lexer:
             ('ID',       r'(?<!\w)[a-zA-Z]\w*'),    
             ('NEWLINE',  r'\n'),          
             ('SKIP',     r'[ \t]+'),       
+            ('EOF', r'\Z'),
             ('MISMATCH', r'.'),           
         ]
         tok_regex = '|'.join('(?P<%s>%s)' % pair for pair in token_specification)
