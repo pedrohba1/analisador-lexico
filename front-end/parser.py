@@ -336,7 +336,7 @@ class Parser:
         self.logicalStmt()
         if self.current_token.type in (OPAnd, OPOr):
             self.eat(self.current_token.type)
-        
+            self.logicalStmt()
         self.current_node = _save
 
 

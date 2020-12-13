@@ -13,7 +13,7 @@ PROGRAMA main {
         a:= a+1;
     } ENQUANTO(10)
 
-    ENQUANTO(b>a){
+    ENQUANTO(b>a AND a>30){
         a:= a + 1;
     }
 }
