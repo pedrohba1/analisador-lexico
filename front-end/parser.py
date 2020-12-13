@@ -190,10 +190,15 @@ class Parser:
             if token.type == ID:
                 self.assign_stmt()
                 self.current_node = _save
-        if self.current_token.type == SE:
-            self.if_then_stmt()
-            self.current_node = _save
-    
+            if self.current_token.type == SE:
+                self.if_then_stmt()
+                self.current_node = _save
+            if self.current_token.type == FACA:
+                self.do_while_stmt()
+                self.current_node = _save
+            if self.current_token.type == ENQUANTO:
+                self.while_stmt()
+                self.current_node = _save
         else: 
             self.current_node = _save
 
@@ -288,19 +293,35 @@ class Parser:
 
     def do_while_stmt(self):
         """
-        do_while_stmt: SE AbreParentese logicalExp FechaParentese ENTAO corpo;
+        do_while_stmt: FACA corpo ENQUANTO AbreParentese logicalExp FechaParentese;
         """
-        node = RuleNode('IfThenStmt')
+        node = RuleNode('doWhileStmt')
         self.current_node.add(node)
         _save = self.current_node
         self.current_node = node
-        self.eat(SE)
+        self.eat(FACA)
+        self.corpo()
+        self.eat(ENQUANTO)
         self.eat(AbreParentese)
         self.logicalExp()
         self.eat(FechaParentese)
-        self.eat(ENTAO)
+        self.current_node = _save
+
+    def while_stmt(self):
+        """
+        while_stmt: ENQUANTO AbreParentese logicalExp FechaParentese corpo;
+        """
+        node = RuleNode('whileStmt')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        self.eat(ENQUANTO)
+        self.eat(AbreParentese)
+        self.logicalExp()
+        self.eat(FechaParentese)
         self.corpo()
         self.current_node = _save
+
     
     def logicalExp(self):
         """

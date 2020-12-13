@@ -9,4 +9,11 @@ PROGRAMA main {
         a:= b+1;
     }
 
+    FACA {
+        a:= a+1;
+    } ENQUANTO(10)
+
+    ENQUANTO(b>a){
+        a:= a + 1;
+    }
 }
