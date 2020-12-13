@@ -42,8 +42,7 @@ class Parser:
 
     def inicio(self):
         """
-        mas ignorando o corpo agora só para testar
-        inicio: PROGRAMA ID ;
+        inicio: PROGRAMA ID corpo;
         """
         node = RuleNode('inicio')
         if self.root is None:
@@ -63,6 +62,9 @@ class Parser:
 
 
     def corpo(self):
+        """
+        corpo:  AbreChave secaoVariaveis listaComandos  FechaChave; 
+        """
         node = RuleNode('corpo')
         if self.root is None:
             self.root = node
@@ -76,10 +78,15 @@ class Parser:
         if token.type == AbreChave:
             self.eat(AbreChave)
             self.secaoVariaveis()
+            self.listaComandos()
             self.eat(FechaChave)
         self.current_node = _save
 
     def secaoVariaveis(self):
+        """
+        secaoVariaveis: VARS Doispontos  listDecVariavel  PVirg;
+        """
+
         node = RuleNode('secaoVariaveis')
         if self.root is None:
             self.root = node
@@ -92,12 +99,6 @@ class Parser:
         token = self.current_token
         self.eat(VARS)
         self.eat(DoisPontos)
-        # while True:
-        #     if self.current_token.type in (INT,REAL,CHAR):
-        #         self.eat(self.current_token.type)
-        #         self.eat(ID)
-        #         if self.current_token.type == PVirg:
-        #             break
         self.listDecVariavel()
         self.eat(PVirg)
         self.current_node = _save
@@ -109,21 +110,14 @@ class Parser:
         else:
             self.current_node.add(node)
             
-        _save = self.current_node
         self.current_node = node
-
 
         token = self.current_token
         if token.type in (INT,REAL,CHAR):
             self.eat(token.type)
             self.eat(ID)
             self.listDecVariavel1()
-        # while True:
-        #     if self.current_token.type in (INT,REAL,CHAR):
-        #         self.eat(self.current_token.type)
-        #         self.eat(ID)
-        #         if self.current_token.type == PVirg:
-        #             break
+
 
     def listDecVariavel1(self):
         node = RuleNode('listDecVariave1')
@@ -144,6 +138,68 @@ class Parser:
         else: 
             self.current_node = _save
 
+    def listaComandos(self):
+        """
+        listaComandos:  stmt | stmt PVirg listaComandos;
+        """
+        node = RuleNode('listaComandos')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        self.stmt()        
+        if self.current_token.type == PVirg:
+            self.eat(PVirg)
+            self.listaComandos()
+            self.current_node = _save
+        else: 
+            self.current_node = _save
+
+
+    def stmt(self):
+        """
+        stmt: assign_stmt | //vazio
+        """
+        node = RuleNode('stmt')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node 
+
+        if self.current_token.type in (ID,FACA,SE,ENQUANTO):
+            token = self.current_token
+            if token.type == ID:
+                self.assign_stmt()
+                self.current_node = _save
+
+        else: 
+            self.current_node = _save
+
+    
+    def assign_stmt(self):
+        """
+        assign_stmt: ID OpAtrib expr
+        """
+
+        node = RuleNode('assignStmt')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+
+        self.eat(ID)
+        self.eat(opAtribuicao)
+        self.expr()
+        self.current_node = _save
+
+    
+    def expr(self):
+        """
+        expr: ConstInt
+        """
+        node = RuleNode('expr')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        self.eat(ConstInt)
+        self.current_node = node
 
 
     def parse(self):

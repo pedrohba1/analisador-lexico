@@ -1,4 +1,6 @@
 PROGRAMA main {
-        VARS : REAL ab, INT a, CHAR oiuaf;
+    VARS : REAL ab, INT a, CHAR oiuaf;
+    a := 0;
 
+    b:= 1;
 }
