@@ -30,9 +30,9 @@ digraph astgraph {
   node7 -> node13
   node14 [label="listaComandos"]
   node7 -> node14
-  node15 [label="REAL"]
+  node15 [label="INT"]
   node11 -> node15
-  node16 [label="ab"]
+  node16 [label="a"]
   node11 -> node16
   node17 [label="listDecVariave1"]
   node11 -> node17
@@ -50,7 +50,7 @@ digraph astgraph {
   node17 -> node23
   node24 [label="INT"]
   node17 -> node24
-  node25 [label="a"]
+  node25 [label="b"]
   node17 -> node25
   node26 [label="listDecVariave1"]
   node17 -> node26
@@ -68,7 +68,7 @@ digraph astgraph {
   node26 -> node32
   node33 [label="CHAR"]
   node26 -> node33
-  node34 [label="oiuaf"]
+  node34 [label="c"]
   node26 -> node34
   node35 [label="listDecVariave1"]
   node26 -> node35
@@ -80,62 +80,124 @@ digraph astgraph {
   node30 -> node38
   node39 [label="expr"]
   node30 -> node39
-  node40 [label="fator"]
-  node36 -> node40
-  node41 [label="term"]
-  node39 -> node41
-  node42 [label="("]
-  node40 -> node42
-  node43 [label="expr"]
+  node40 [label="IfThenStmt"]
+  node31 -> node40
+  node41 [label="fator"]
+  node36 -> node41
+  node42 [label="term"]
+  node39 -> node42
+  node43 [label="SE"]
   node40 -> node43
-  node44 [label=")"]
+  node44 [label="("]
   node40 -> node44
-  node45 [label="*"]
+  node45 [label="logicalExpr"]
   node40 -> node45
-  node46 [label="fator"]
+  node46 [label=")"]
   node40 -> node46
-  node47 [label="fator"]
-  node41 -> node47
-  node48 [label="term"]
-  node43 -> node48
-  node49 [label="+"]
-  node43 -> node49
-  node50 [label="term"]
-  node43 -> node50
-  node51 [label="4"]
-  node46 -> node51
-  node52 [label="("]
-  node47 -> node52
-  node53 [label="expr"]
-  node47 -> node53
-  node54 [label=")"]
-  node47 -> node54
-  node55 [label="*"]
-  node47 -> node55
-  node56 [label="fator"]
-  node47 -> node56
-  node57 [label="fator"]
+  node47 [label="ENTAO"]
+  node40 -> node47
+  node48 [label="corpo"]
+  node40 -> node48
+  node49 [label="("]
+  node41 -> node49
+  node50 [label="expr"]
+  node41 -> node50
+  node51 [label=")"]
+  node41 -> node51
+  node52 [label="*"]
+  node41 -> node52
+  node53 [label="fator"]
+  node41 -> node53
+  node54 [label="fator"]
+  node42 -> node54
+  node55 [label="logicalExpr"]
+  node45 -> node55
+  node56 [label="{"]
+  node48 -> node56
+  node57 [label="secaoVariaveis"]
   node48 -> node57
-  node58 [label="fator"]
-  node50 -> node58
-  node59 [label="term"]
-  node53 -> node59
-  node60 [label="+"]
-  node53 -> node60
-  node61 [label="term"]
-  node53 -> node61
-  node62 [label="4"]
-  node56 -> node62
-  node63 [label="3"]
-  node57 -> node63
-  node64 [label="5"]
-  node58 -> node64
-  node65 [label="fator"]
-  node59 -> node65
-  node66 [label="fator"]
-  node61 -> node66
-  node67 [label="3"]
-  node65 -> node67
-  node68 [label="5"]
-  node66 -> node68
+  node58 [label="listaComandos"]
+  node48 -> node58
+  node59 [label="}"]
+  node48 -> node59
+  node60 [label="term"]
+  node50 -> node60
+  node61 [label="+"]
+  node50 -> node61
+  node62 [label="term"]
+  node50 -> node62
+  node63 [label="4"]
+  node53 -> node63
+  node64 [label="("]
+  node54 -> node64
+  node65 [label="expr"]
+  node54 -> node65
+  node66 [label=")"]
+  node54 -> node66
+  node67 [label="*"]
+  node54 -> node67
+  node68 [label="fator"]
+  node54 -> node68
+  node69 [label="expr"]
+  node55 -> node69
+  node70 [label="stmt"]
+  node58 -> node70
+  node71 [label=";"]
+  node58 -> node71
+  node72 [label="listaComandos"]
+  node58 -> node72
+  node73 [label="fator"]
+  node60 -> node73
+  node74 [label="fator"]
+  node62 -> node74
+  node75 [label="term"]
+  node65 -> node75
+  node76 [label="+"]
+  node65 -> node76
+  node77 [label="term"]
+  node65 -> node77
+  node78 [label="4"]
+  node68 -> node78
+  node79 [label="term"]
+  node69 -> node79
+  node80 [label="assignStmt"]
+  node70 -> node80
+  node81 [label="stmt"]
+  node72 -> node81
+  node82 [label="3"]
+  node73 -> node82
+  node83 [label="5"]
+  node74 -> node83
+  node84 [label="fator"]
+  node75 -> node84
+  node85 [label="fator"]
+  node77 -> node85
+  node86 [label="fator"]
+  node79 -> node86
+  node87 [label="a"]
+  node80 -> node87
+  node88 [label=":="]
+  node80 -> node88
+  node89 [label="expr"]
+  node80 -> node89
+  node90 [label="3"]
+  node84 -> node90
+  node91 [label="5"]
+  node85 -> node91
+  node92 [label="10"]
+  node86 -> node92
+  node93 [label="term"]
+  node89 -> node93
+  node94 [label="+"]
+  node89 -> node94
+  node95 [label="term"]
+  node89 -> node95
+  node96 [label="fator"]
+  node93 -> node96
+  node97 [label="fator"]
+  node95 -> node97
+  node98 [label="b"]
+  node96 -> node98
+  node99 [label="1"]
+  node97 -> node99
 }

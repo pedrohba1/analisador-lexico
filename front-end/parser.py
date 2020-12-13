@@ -97,11 +97,14 @@ class Parser:
         self.current_node = node
 
         token = self.current_token
-        self.eat(VARS)
-        self.eat(DoisPontos)
-        self.listDecVariavel()
-        self.eat(PVirg)
-        self.current_node = _save
+        if token.type == VARS:
+            self.eat(VARS)
+            self.eat(DoisPontos)
+            self.listDecVariavel()
+            self.eat(PVirg)
+            self.current_node = _save
+        else: 
+            self.current_node = _save
 
     def listDecVariavel(self):
         """
@@ -187,7 +190,10 @@ class Parser:
             if token.type == ID:
                 self.assign_stmt()
                 self.current_node = _save
-
+        if self.current_token.type == SE:
+            self.if_then_stmt()
+            self.current_node = _save
+    
         else: 
             self.current_node = _save
 
@@ -263,6 +269,81 @@ class Parser:
             self.expr()
             self.eat(FechaParentese)
         self.curret_node = _save
+
+    def if_then_stmt(self):
+        """
+        if_then_stmt: SE AbreParentese logicalExp FechaParentese ENTAO corpo;
+        """
+        node = RuleNode('IfThenStmt')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        self.eat(SE)
+        self.eat(AbreParentese)
+        self.logicalExp()
+        self.eat(FechaParentese)
+        self.eat(ENTAO)
+        self.corpo()
+        self.current_node = _save
+
+    def do_while_stmt(self):
+        """
+        do_while_stmt: SE AbreParentese logicalExp FechaParentese ENTAO corpo;
+        """
+        node = RuleNode('IfThenStmt')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        self.eat(SE)
+        self.eat(AbreParentese)
+        self.logicalExp()
+        self.eat(FechaParentese)
+        self.eat(ENTAO)
+        self.corpo()
+        self.current_node = _save
+    
+    def logicalExp(self):
+        """
+        logicalExp: logicalStmt OPAnd logicalStmt 
+                | logicalStmt OPOr logicalStmt
+                | logicalStmt
+        """
+        node = RuleNode('logicalExpr')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        self.logicalStmt()
+        if self.current_token.type in (OPAnd, OPOr):
+            self.eat(self.current_token.type)
+        
+        self.current_node = _save
+
+
+
+    
+    def logicalStmt(self):
+        """
+        logicalStmt: expr OPMaior expr 
+                    | expr OPMenor expr
+                    | expr OPIgual expr
+                    | expr OPMaiorIgual expr
+                    | expr OPDiferente expr
+                    | expr OPMenorIgual expr
+                    | expr
+
+        """
+        node = RuleNode('logicalExpr')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        self.expr()
+        if self.current_token.type in (OPMaior, OPIgual, OPMaiorIgual, OPDiferente, OPMenorIgual):
+            self.eat(self.current_token.type)
+            self.expr()
+        self.current_node = _save
+
+
+
 
 
     def parse(self):

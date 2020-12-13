@@ -29,4 +29,13 @@ VARS, DoisPontos,PROGRAMA, SE, ENTAO, SENAO, ENQUANTO, FACA, INT, REAL, CHAR, OR
     'FechaParentese'
     )
 
+
+ConstChar = 'ConstChar'
 ConstReal = 'ConstReal'
+OPMenorIgual = 'OPMenorIgual'
+OPMaiorIgual = 'OPMaiorIgual'
+OPMaior = 'OPMaior'
+OPDiferente = 'OPDiferente'
+OPIgual = 'OPIgual'
+OPAnd = 'OPAnd'
+OPOr = 'OPOr'

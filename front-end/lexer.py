@@ -38,12 +38,12 @@ class Lexer:
             ('FechaParentese', r'\)'),          
             ('AbreChave', r'\{'),                
             ('FechaChave', r'\}'),              
-            ('opMenorIgual', r'<='),              
-            ('opMaiorIgual', r'>='),   
-            ('opMaior', r'>'),
-            ('opMenor', r'<'),
-            ('opDiferente', r'<>'),             
-            ('opIgual', r'=='),             
+            ('OPMenorIgual', r'<='),              
+            ('OPMaiorIgual', r'>='),   
+            ('OPMaior', r'>'),
+            ('OPMenor', r'<'),
+            ('OPDiferente', r'<>'),             
+            ('OPIgual', r'=='),             
             ('ID',       r'(?<!\w)[a-zA-Z]\w*'),    
             ('NEWLINE',  r'\n'),          
             ('SKIP',     r'[ \t]+'),       
@@ -59,9 +59,9 @@ class Lexer:
             column = mo.start() - line_start
             if tipo == 'ID' and value in keywords:
                 if value == 'AND':
-                    tipo = 'opAnd'
+                    tipo = 'OPAnd'
                 elif value == 'OR':
-                    tipo = 'opOr'
+                    tipo = 'OPOr'
                 elif value == 'NOT':
                             tipo = 'opNot'  
                 elif value == 'int':

@@ -1,7 +1,12 @@
 PROGRAMA main {
-    VARS : REAL ab, INT a, CHAR oiuaf;
+    VARS: INT a, INT b, CHAR c;
+
     a := (3+5)*4;
 
     b := (3+5)*4;
+
+    SE (10) ENTAO {
+        a:= b+1;
+    }
 
 }
