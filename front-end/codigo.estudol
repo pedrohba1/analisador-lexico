@@ -9,6 +9,12 @@ PROGRAMA main {
         a:= b+1;
     };
 
+    SE (a>b) ENTAO{
+        a := a;
+    } SENAO {
+        b := b;
+    };
+
     FACA {
         a:= a+1;
     } ENQUANTO(10);

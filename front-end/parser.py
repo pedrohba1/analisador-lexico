@@ -175,17 +175,15 @@ class Parser:
 
 
     def listaComandos(self):
-        """
-        listaComandos:  stmt | stmt PVirg listaComandos;
-        
-        listaComandos:  stmt stmt_aux;
+        """        
+        listaComandos:  stmt ;
         """
         node = RuleNode('listaComandos')
         self.current_node.add(node)
         _save = self.current_node
         self.current_node = node
         self.stmt()        
-        self.stmt_aux()
+        self.current_node = _save
 
     def stmt_aux(self):
         """
@@ -205,10 +203,10 @@ class Parser:
 
     def stmt(self):
         """
-        stmt: assign_stmt PVirg 
-        | if_then_stmt Pvirg
-        | do_while_stmt PVirg
-        | while_stmt PVirg
+        stmt: assign_stmt stmt_aux 
+        | if_then_stmt stmt_aux
+        | do_while_stmt stmt_aux
+        | while_stmt stmt_aux
         |//vazio
         """
         node = RuleNode('stmt')
@@ -220,19 +218,15 @@ class Parser:
             token = self.current_token
             if token.type == ID:
                 self.assign_stmt()
+                
             elif self.current_token.type == SE:
                 self.if_then_stmt()
             elif self.current_token.type == FACA:
                 self.do_while_stmt()
             elif self.current_token.type == ENQUANTO:
                 self.while_stmt()
-            
-            if token.type == PVirg:
-                self.eat(PVirg)
-                self.current_node = _save
-
-        else: 
-            self.current_node = _save
+        self.stmt_aux()
+        self.current_node = _save
 
     
     def assign_stmt(self):
