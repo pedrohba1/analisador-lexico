@@ -75,6 +75,18 @@ public class estudolBaseListener implements estudolListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterVarDec(estudolParser.VarDecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarDec(estudolParser.VarDecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterListaComandos(estudolParser.ListaComandosContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -82,6 +94,18 @@ public class estudolBaseListener implements estudolListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitListaComandos(estudolParser.ListaComandosContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStmt_aux(estudolParser.Stmt_auxContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStmt_aux(estudolParser.Stmt_auxContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -118,6 +142,18 @@ public class estudolBaseListener implements estudolListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitIf_then_stmt(estudolParser.If_then_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStmtSENAO(estudolParser.StmtSENAOContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStmtSENAO(estudolParser.StmtSENAOContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -183,6 +219,30 @@ public class estudolBaseListener implements estudolListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOpArith1(estudolParser.OpArith1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpArith1(estudolParser.OpArith1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpArith2(estudolParser.OpArith2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpArith2(estudolParser.OpArith2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLogicalExp(estudolParser.LogicalExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -195,6 +255,18 @@ public class estudolBaseListener implements estudolListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOpLogic(estudolParser.OpLogicContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpLogic(estudolParser.OpLogicContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLogicalStmt(estudolParser.LogicalStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -202,6 +274,18 @@ public class estudolBaseListener implements estudolListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLogicalStmt(estudolParser.LogicalStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpRelac(estudolParser.OpRelacContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpRelac(estudolParser.OpRelacContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -12,62 +12,84 @@ secaoVariaveis: VARS Doispontos  listDecVariavel  PVirg
                 |// vazio
                 ;
 
-listDecVariavel:  TipoInt ID listDecVariavel1 
-                |   TipoReal ID listDecVariavel1 
-                |   TipoChar ID listDecVariavel1
-                ;
 
-listDecVariavel1:  VIRG TipoInt ID listDecVariavel1
-                |   VIRG  TipoReal ID  listDecVariavel1 
-                |   VIRG  TipoChar ID  listDecVariavel1 
-                |   //ε
-                ;
+listDecVariavel:    varDec listDecVariavel1
+		;
+listDecVariavel1:   VIRG varDec listDecVariavel1
+	       |   //ε
+                        ;
+varDec:  TipoInt ID 
+	|TipoReal ID 
+	|TipoChar ID
+	;
+
+listaComandos:  stmt;
+
+stmt_aux: PVirg listaComandos |   //ε
+        ;
 
 
-listaComandos:  stmt | stmt PVirg listaComandos;
-
-
-stmt: assign_stmt 
-| if_then_stmt
-| do_while_stmt
-| while_stmt
+stmt: assign_stmt stmt_aux
+| if_then_stmt stmt_aux
+| do_while_stmt stmt_aux
+| while_stmt stmt_aux
 |//vazio
 ;
 
 assign_stmt: ID OPAtrib expr;
 
-if_then_stmt: SE AbreParentese logicalExp FechaParentese ENTAO corpo;
+if_then_stmt: SE AbreParentese logicalExp FechaParentese ENTAO corpo stmtSENAO;
+
+stmtSENAO: SENAO corpo | //vazio 
+                        ;
 
 do_while_stmt: FACA corpo ENQUANTO AbreParentese logicalExp FechaParentese;
 
 while_stmt: ENQUANTO AbreParentese logicalExp FechaParentese corpo;
 
-expr: term OPMais term | term OPMenos term | term;
+expr: term opArith1;
 
-term: fator OPMult fator | fator OPDiv fator | fator;
+term: fator opArith2;
 
-fator: fator OPMais fator
-| fator  OPMenos fator
+fator: opArith1
 | INT
 | REAL
 | AbreParentese expr FechaParentese
 | ID
 ;
 
+opArith1: OPMais term
+	|OPMenos term
+	| //e
+	;
 
-logicalExp: logicalStmt OPAnd logicalStmt 
-        | logicalStmt OPOr logicalStmt
-        | logicalStmt
+opArith2: OPMult fator
+	|OPDiv fator
+	| //e
         ;
 
-logicalStmt: expr OPMaior expr 
-                    | expr OPMenor expr
-                    | expr OPIgual expr
-                    | expr OPMaiorIgual expr
-                    | expr OPDiferente expr
-                    | expr OPMenorIgual expr
-                    | expr
-                    ;
+
+logicalExp: logicalStmt opLogic;
+
+
+opLogic: OPAnd logicalStmt 
+	|OPOr logicalStmt 
+	| //e
+	;
+
+
+logicalStmt: expr opRelac;
+
+opRelac: OPMaior expr
+	|OPMenor expr
+	|OPIgual expr
+	|OPMaiorIgual expr
+	|OPMenorIgual expr
+	|OPDiferente expr
+	| //e
+	;
+
+
 
 //regras que começam com letra maiúscula são regras do lexer
 INT: [0-9]+;
