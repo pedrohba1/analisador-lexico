@@ -108,10 +108,7 @@ class Parser:
 
     def listDecVariavel(self):
         """
-        listDecVariavel:  TipoInt ID listDecVariavel1 
-                |   TipoReal ID listDecVariavel1 
-                |   TipoChar ID listDecVariavel1
-                ;
+        listDecVariavel:    varDec listDecVariavel1
         """
         node = RuleNode('listDecVariavel')
         if self.root is None:
@@ -122,19 +119,19 @@ class Parser:
         self.current_node = node
 
         token = self.current_token
-        if token.type in (INT,REAL,CHAR):
-            self.eat(token.type)
-            self.eat(ID)
-            self.listDecVariavel1()
+        self.varDec()
+        self.listDecVariavel1()
+        # if token.type in (INT,REAL,CHAR):
+        #     self.eat(token.type)
+        #     self.eat(ID)
+        #     self.listDecVariavel1()
+
 
 
     def listDecVariavel1(self):
         """
-        listDecVariavel1:  VIRG TipoInt ID listDecVariavel1
-                |   VIRG  TipoReal ID  listDecVariavel1 
-                |   VIRG  TipoChar ID  listDecVariavel1 
-                |   //ε
-                ;
+        listDecVariavel1:   VIRG varDec listDecVariavel1
+	                       |   //ε
         """
 
         node = RuleNode('listDecVariave1')
@@ -148,36 +145,70 @@ class Parser:
 
         if self.current_token.type == VIRG:
             self.eat(VIRG)
-            self.eat(self.current_token.type)
-            self.eat(ID)
+            self.varDec()
             self.listDecVariavel1()
             self.current_node = _save
         else: 
             self.current_node = _save
 
+
+    def varDec(self):
+        """
+        varDec:  TipotInt ID 
+                |TipoReal ID 
+                |TipoChar ID
+                ;
+        """
+        node = RuleNode('varDec')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+
+        token = self.current_token
+
+        if token.type in (INT,REAL,CHAR):
+            self.eat(token.type)
+            self.eat(ID)
+            self.current_node = _save
+        else: 
+            self.current_node = _save
+
+
     def listaComandos(self):
         """
         listaComandos:  stmt | stmt PVirg listaComandos;
+        
+        listaComandos:  stmt stmt_aux;
         """
         node = RuleNode('listaComandos')
         self.current_node.add(node)
         _save = self.current_node
         self.current_node = node
         self.stmt()        
+        self.stmt_aux()
+
+    def stmt_aux(self):
+        """
+        stmt_aux: PVirg ListaComandos | //ε;
+        """
+        node = RuleNode('stmt_aux')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
         if self.current_token.type == PVirg:
             self.eat(PVirg)
             self.listaComandos()
             self.current_node = _save
-        else: 
+        else:
             self.current_node = _save
 
 
     def stmt(self):
         """
-        stmt: assign_stmt 
-        | if_then_stmt
-        | do_while_stmt
-        | while_stmt
+        stmt: assign_stmt PVirg 
+        | if_then_stmt Pvirg
+        | do_while_stmt PVirg
+        | while_stmt PVirg
         |//vazio
         """
         node = RuleNode('stmt')
@@ -189,16 +220,17 @@ class Parser:
             token = self.current_token
             if token.type == ID:
                 self.assign_stmt()
-                self.current_node = _save
-            if self.current_token.type == SE:
+            elif self.current_token.type == SE:
                 self.if_then_stmt()
-                self.current_node = _save
-            if self.current_token.type == FACA:
+            elif self.current_token.type == FACA:
                 self.do_while_stmt()
-                self.current_node = _save
-            if self.current_token.type == ENQUANTO:
+            elif self.current_token.type == ENQUANTO:
                 self.while_stmt()
+            
+            if token.type == PVirg:
+                self.eat(PVirg)
                 self.current_node = _save
+
         else: 
             self.current_node = _save
 
@@ -221,40 +253,35 @@ class Parser:
     
     def expr(self):
         """
-        expr: term OPMais term | term OPMenos term | term;
+        expr: term opArith1;
         """
         node = RuleNode('expr')
         self.current_node.add(node)
         _save = self.current_node
         self.current_node = node
         self.term()
-        if self.current_token.type in (OPMais, OPMenos):
-            self.eat(self.current_token.type)
-            self.term()
+        self.opArith1()
         self.current_node = _save
 
 
 
     def term(self):
-        """
-        term: fator OPMult fator | fator OPDiv fator | fator;
+        """        
+        term: fator opMath2;   
         """
         node = RuleNode('term')
         self.current_node.add(node)
         _save = self.current_node
         self.current_node = node
         self.fator()
-        if self.current_token.type in (OPMult, OPDiv):
-            self.eat(self.current_token.type)
-            self.fator()
+        self.opArith2()
         self.current_node = _save
 
     
 
     def fator(self):
         """
-        fator: OPMais fator
-            | OPMenos fator
+        fator: opArith1
             | INT
             | REAL
             | AbreParentese expr FechaParentese
@@ -265,8 +292,7 @@ class Parser:
         _save = self.current_node
         self.current_node = node
         if self.current_token.type in (OPMais, OPMenos):
-            self.eat(self.current_token.type)
-            self.fator()
+            self.opArith1()
         elif self.current_token.type in (ConstInt, ConstReal,ID):
             self.eat(self.current_token.type)
         elif self.current_token.type == AbreParentese:
@@ -275,9 +301,43 @@ class Parser:
             self.eat(FechaParentese)
         self.curret_node = _save
 
+
+    def opArith1(self):
+        """
+        opArith1: OPMais term
+                |OPmenos term
+                | //e
+                ;
+        """
+        node = RuleNode('opArith1')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        if self.current_token.type in (OPMais, OPMenos):
+            self.eat(self.current_token.type)
+            self.term()
+        
+        self.curret_node = _save
+    
+    def opArith2(self):
+        """
+            opArith2: OPMult fator
+                    |OPDiv fator
+                    | //e
+        """
+        node = RuleNode('opArith2')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        if self.current_token.type in (OPMult, OPDiv):
+            self.eat(self.current_token.type)
+            self.fator()
+        
+        self.current_node = _save
+
     def if_then_stmt(self):
         """
-        if_then_stmt: SE AbreParentese logicalExp FechaParentese ENTAO corpo;
+        if_then_stmt: SE AbreParentese logicalExp FechaParentese ENTAO corpo stmtSENAO;
         """
         node = RuleNode('IfThenStmt')
         self.current_node.add(node)
@@ -289,7 +349,23 @@ class Parser:
         self.eat(FechaParentese)
         self.eat(ENTAO)
         self.corpo()
+        self.stmtSENAO()
         self.current_node = _save
+
+    def stmtSENAO(self):
+        """
+        stmtSENAO: SENAO corpo | //vazio ;
+        """
+        node = RuleNode('stmtSenao')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        if self.current_token.type == SENAO:
+            self.eat(SENAO)
+            self.corpo()
+
+        self.current_node = _save
+
 
     def do_while_stmt(self):
         """
@@ -325,59 +401,69 @@ class Parser:
     
     def logicalExp(self):
         """
-        logicalExp: logicalStmt OPAnd logicalStmt 
-                | logicalStmt OPOr logicalStmt
-                | logicalStmt
+        logicalExp: logicalStmt opLogic;
         """
         node = RuleNode('logicalExpr')
         self.current_node.add(node)
         _save = self.current_node
         self.current_node = node
         self.logicalStmt()
+        self.opLogic()
+
+        self.current_node = _save
+
+    def opLogic(self):
+        """
+        opLogic: OPAnd logicalStmt 
+                |OPOr logicalStmt 
+                | //ε
+        """
+        node = RuleNode('opLogic')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
         if self.current_token.type in (OPAnd, OPOr):
             self.eat(self.current_token.type)
             self.logicalStmt()
+
         self.current_node = _save
-
-
 
     
     def logicalStmt(self):
         """
-        logicalStmt: expr OPMaior expr 
-                    | expr OPMenor expr
-                    | expr OPIgual expr
-                    | expr OPMaiorIgual expr
-                    | expr OPDiferente expr
-                    | expr OPMenorIgual expr
-                    | expr
-
+        logicalStmt: expr opRelac;
         """
-        node = RuleNode('logicalExpr')
+        node = RuleNode('logicalStmt')
         self.current_node.add(node)
         _save = self.current_node
         self.current_node = node
         self.expr()
-        if self.current_token.type in (OPMaior, OPIgual, OPMaiorIgual, OPDiferente, OPMenorIgual):
-            self.eat(self.current_token.type)
-            self.expr()
+        self.opRelac()
         self.current_node = _save
 
 
+    def opRelac(self):
+        """
+        opRelac: OPMaior expr
+                |OPMenor expr
+                |OPIgual expr
+                |OPMaiorIgual expr
+                |OPMenorIgual expr
+                |OPDiferente expr
+                | // ε
+        """
+        node = RuleNode('opRelac')
+        self.current_node.add(node)
+        _save = self.current_node
+        self.current_node = node
+        if self.current_token.type in (OPMaior, OPMenor, OPIgual, OPDiferente, OPMaiorIgual, OPMenorIgual):
+            self.eat(self.current_token.type)
+            self.expr()
+
+        self.current_node = _save
 
 
 
     def parse(self):
         self.inicio()
         return self.root
-
-
-
-
-
-    
-
-
-
-
-
