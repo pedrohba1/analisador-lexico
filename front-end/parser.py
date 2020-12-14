@@ -84,7 +84,7 @@ class Parser:
 
     def secaoVariaveis(self):
         """
-        secaoVariaveis: VARS Doispontos  listDecVariavel  PVirg;
+        secaoVariaveis: VARS Doispontos  listDecVariavel  PVirg | //vazio;
         """
 
         node = RuleNode('secaoVariaveis')
@@ -205,7 +205,7 @@ class Parser:
     
     def assign_stmt(self):
         """
-        assign_stmt: ID OpAtrib expr
+        assign_stmt: ID OPAtrib expr;
         """
 
         node = RuleNode('assignStmt')
@@ -221,7 +221,7 @@ class Parser:
     
     def expr(self):
         """
-        expr: term OPMais term | term OPMenos term;
+        expr: term OPMais term | term OPMenos term | term;
         """
         node = RuleNode('expr')
         self.current_node.add(node)
@@ -237,7 +237,7 @@ class Parser:
 
     def term(self):
         """
-        term: fator OPMult fator | fator OPDiv fator;
+        term: fator OPMult fator | fator OPDiv fator | fator;
         """
         node = RuleNode('term')
         self.current_node.add(node)
