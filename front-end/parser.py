@@ -280,6 +280,7 @@ class Parser:
             | REAL
             | AbreParentese expr FechaParentese
             | ID
+            | CHAR
         """
         node = RuleNode('fator')
         self.current_node.add(node)
@@ -287,7 +288,7 @@ class Parser:
         self.current_node = node
         if self.current_token.type in (OPMais, OPMenos):
             self.opArith1()
-        elif self.current_token.type in (ConstInt, ConstReal,ID):
+        elif self.current_token.type in (ConstInt, ConstReal,ID, ConstChar):
             self.eat(self.current_token.type)
         elif self.current_token.type == AbreParentese:
             self.eat(AbreParentese)

@@ -2,7 +2,7 @@ PROGRAMA main {
     VARS: INT a, INT b, CHAR c;
 
     a := (3+5)*4;
-
+    c := 'a';
     b := 3+((3+5)*4);
 
     SE (10) ENTAO {
@@ -13,6 +13,10 @@ PROGRAMA main {
         a := a;
     } SENAO {
         b := b;
+    };
+
+    SE (a>b AND b>c) ENTAO{
+        a:=b;
     };
 
     FACA {

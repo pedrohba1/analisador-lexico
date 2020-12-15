@@ -40,3 +40,4 @@ OPDiferente = 'OPDiferente'
 OPIgual = 'OPIgual'
 OPAnd = 'OPAnd'
 OPOr = 'OPOr'
+
