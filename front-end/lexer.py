@@ -53,9 +53,14 @@ class Lexer:
         tok_regex = '|'.join('(?P<%s>%s)' % pair for pair in token_specification)
         line_num = 1
         line_start = 0
+        # mo é um matchObject
         for mo in re.finditer(tok_regex, code):
+            
             tipo = mo.lastgroup
+            print(tipo)
             value = mo.group()
+            print(value)
+
             column = mo.start() - line_start
             if tipo == 'ID' and value in keywords:
                 if value == 'AND':
