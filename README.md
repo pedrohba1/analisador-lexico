@@ -1,4 +1,3 @@
-# Project Title
 # Linguagem de programação Estudol
 
 O código do analisador léxico e do analisador sintático estão ambos na pasta `front-end`.
