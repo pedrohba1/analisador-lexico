@@ -15,6 +15,8 @@ class ParseTreeVisualizer(object):
         self.dot_body = []
         self.dot_footer = ['}']
 
+
+    # Breadth-first search  
     def bfs(self, node):
         ncount = 1
         queue = []

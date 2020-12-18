@@ -2,8 +2,6 @@ import re
 from typing import NamedTuple
 
 
-
-
 class Token(NamedTuple):
     type: str
     value: str
@@ -50,10 +48,17 @@ class Lexer:
             ('EOF', r'\Z'),
             ('MISMATCH', r'.'),           
         ]
+
+        # A regra (?P<name>regex) é um "named captruing group". Ou seja, o regex que
+        # está escrito depois de <> pode ser acessado pelo symbolic group que no caso é name
+        # aí todos os tokens acima são juntados numa string só, cada um com seu regex e seu symbolic 
+        # name, separados por | que o operador de OR do regex.
+        # http://www.regular-expressions.info/named.html
         tok_regex = '|'.join('(?P<%s>%s)' % pair for pair in token_specification)
         line_num = 1
         line_start = 0
-        # mo é um matchObject
+        # mo é um matchObject. finditer retorna uma lista de todos os matches que foram encontrados 
+        # levando em consideração o tok_regex e a entrada de texto passada (code)
         for mo in re.finditer(tok_regex, code):
 
             # a primeira vez que ele lê as keywords, ele considera elas um ID.
@@ -68,13 +73,14 @@ class Lexer:
                 elif value == 'OR':
                     tipo = 'OPOr'
                 elif value == 'NOT':
-                            tipo = 'opNot'  
+                    tipo = 'opNot'  
+                # esses 3 elifs nem precisam mais:
                 elif value == 'int':
-                            tipo = 'tipoInt'       
+                    tipo = 'tipoInt'       
                 elif value == 'real':
-                            tipo = 'tipoReal'
+                    tipo = 'tipoReal'
                 elif value == 'char':
-                            tipo = 'tipoChar'
+                    tipo = 'tipoChar'
                 else:
                     tipo = value.upper()
             elif tipo == 'NEWLINE':

@@ -70,7 +70,7 @@ class Parser:
             self.root = node
         else:
             self.current_node.add(node)
-            
+
         _save = self.current_node
         self.current_node = node
 
@@ -115,12 +115,15 @@ class Parser:
             self.root = node
         else:
             self.current_node.add(node)
-            
+        
+        _save = self.current_node
         self.current_node = node
 
         token = self.current_token
         self.varDec()
         self.listDecVariavel1()
+        self.current_node = _save
+
         # if token.type in (INT,REAL,CHAR):
         #     self.eat(token.type)
         #     self.eat(ID)

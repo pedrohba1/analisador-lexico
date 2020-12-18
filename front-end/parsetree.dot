@@ -24,28 +24,28 @@ digraph astgraph {
   node6 -> node10
   node11 [label="listDecVariavel"]
   node6 -> node11
-  node12 [label="stmt"]
-  node7 -> node12
-  node13 [label="varDec"]
-  node11 -> node13
-  node14 [label="listDecVariave1"]
+  node12 [label=";"]
+  node6 -> node12
+  node13 [label="stmt"]
+  node7 -> node13
+  node14 [label="varDec"]
   node11 -> node14
-  node15 [label=";"]
+  node15 [label="listDecVariave1"]
   node11 -> node15
   node16 [label="assignStmt"]
-  node12 -> node16
+  node13 -> node16
   node17 [label="stmt_aux"]
-  node12 -> node17
+  node13 -> node17
   node18 [label="INT"]
-  node13 -> node18
+  node14 -> node18
   node19 [label="a"]
-  node13 -> node19
+  node14 -> node19
   node20 [label=","]
-  node14 -> node20
+  node15 -> node20
   node21 [label="varDec"]
-  node14 -> node21
+  node15 -> node21
   node22 [label="listDecVariave1"]
-  node14 -> node22
+  node15 -> node22
   node23 [label="a"]
   node16 -> node23
   node24 [label=":="]
