@@ -55,11 +55,11 @@ class Lexer:
         line_start = 0
         # mo é um matchObject
         for mo in re.finditer(tok_regex, code):
-            
+
+            # a primeira vez que ele lê as keywords, ele considera elas um ID.
+            # esse problema é corrigido logo abaixo no else do primeiro if aninhado à seguir
             tipo = mo.lastgroup
-            print(tipo)
             value = mo.group()
-            print(value)
 
             column = mo.start() - line_start
             if tipo == 'ID' and value in keywords:

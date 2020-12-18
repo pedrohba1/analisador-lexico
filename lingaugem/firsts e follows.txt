@@ -1,0 +1,50 @@
+//Firsts:
+First(inicio) = {PROGRAMA}
+First(corpo) = {AbreChave}
+First(secaoVariaveis) = {VARS,  ε}
+First(listDecVariavel1) = {VIRG, ε}
+First(VarDec) = {TipoInt, TipoChar, TipoReal}
+First(stmt_aux) = {PVirg, ε}
+First(stmt) = {ε, ID, FACA, SE, ENQUANTO}
+First(assign_stmt) = {ID}
+First(if_then_stmt) = {SE}
+First(stmtSENAO) = {SENAO, ε}
+First(do_while_stmt) = {FACA}
+First(while_stmt) = {ENQUANTO}
+First(fator) = {INT,REAL,AbreParentese, ID, CHAR}
+First(opArith1) = {OPMais, OPMenos, ε}
+First(opArith2) = {OPMult, OPDiv, ε}
+First(opLogic) = {OPAnd, OPOr, ε}
+First(opRelac) = {OPMaior, OPMenor, OPIgual, OPMenorIgual, OPDiferente, OPMaiorIgual, ε}
+First(listDecVariavel) = {TipoInt, TipoChar, TipoReal}
+First(term) = {INT, REAL, AbreParentese, ID, CHAR}
+First(listaComandos) = { ε, ID, FACA, SE, ENQUANTO}
+First(expr) = { INT, REAL, AbreParentese, ID, CHAR}
+First(logicalStmt) = { INT, REAL, AbreParentese, ID, CHAR}
+First(logicalExp) = {INT, REAL, AbreParentese, ID, CHAR}
+
+
+//Follows:
+Follow(inicio) = {$}
+Follow(corpo) = {ENQUANTO, SENAO,PVirg, $, FechaChave}
+Follow(secaoVariaveis) = {ID, FACA, SE, ENQUANTO}
+Follow(listDecVariavel) = {PVirg}
+Follow(listDecVariavel1) = {PVirg}
+Follow(VarDec) = {Virg, PVirg}
+Follow(listaComandos) = {FechaChave}
+Follow(stmt_aux) = { FechaChave}
+Follow(stmt) = {fechaChave}
+Follow(assign_stmt) = {PVirg, fechaChave}
+Follow(if_then_stmt) = {PVirg, fechaChave}
+Follow(stmtSENAO) = {PVirg, fechaChave}
+Follow(do_while_stmt) = {PVirg, fechaChave}
+Follow(while_stmt) = {PVirg, fechaChave}
+Follow(expr) = {OPMaior, OPMenor, OPIgual, OPMenorIgual, OPDiferente, OPMaiorIgual, FechaParentese, OPAnd, OPOr, PVirg, FechaChave}
+Follow(term) = {OPMais, OPMenos, OPMaior, OPMenor, OPIgual, OPMenorIgual, OPDiferente, OPMaiorIgual, FechaParentese, OPAnd, OPOr, PVirg, FechaChave, OPMult, OPDiv}
+Follow(fator) = {OPMult, OPDiv, OPMais, OPMenos, OPMaior, OPMenor, OPIgual, OPMenorIgual, OPDiferente, OPMaiorIgual, FechaParentese, OPAnd, OPOr, PVirg, FechaChave}
+Follow(opArith1) = {OPMaior, OPMenor, OPIgual, OPMenorIgual, OPDiferente, OPMaiorIgual, FechaParentese, OPAnd, OPOr, PVirg, FechaChave}
+Follow(opArith2) = {OPMais, OPMenos, OPMaior, OPMenor, OPIgual, OPMenorIgual, OPDiferente, OPMaiorIgual, FechaParentese, OPAnd, OPOr, PVirg, FechaChave}
+Follow(logicalExp) = {FechaParentese}
+Follow(opLogic) = {FechaParentese}
+Follow(logicalStmt) = {OPAnd, OPOr, FechaParentese}
+Follow(opRelac) = {OPAnd, OPOr, FechaParentese}
