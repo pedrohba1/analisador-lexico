@@ -1,0 +1,20 @@
+PROGRAMA teste
+{ 
+    VARS: 
+    INT x1, 
+    INT x2, 
+    REAL media, 
+    CHAR parecer;
+
+    x1:=6;
+    x2:=4;
+    media := (x1 + x2)/2;
+
+    SE (media >= 6) ENTAO{
+        parecer := 'A';
+    }
+    SENAO
+    {
+        parecer := 'R';
+    };
+}

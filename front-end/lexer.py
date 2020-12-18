@@ -42,7 +42,7 @@ class Lexer:
             ('OPMenor', r'<'),
             ('OPDiferente', r'<>'),             
             ('OPIgual', r'=='),             
-            ('ID',       r'(?<!\w)[a-zA-Z]\w*'),    
+            ('ID',       r'(?<!\w)[a-zA-Z0-9]\w*'),    
             ('NEWLINE',  r'\n'),          
             ('SKIP',     r'[ \t]+'),       
             ('EOF', r'\Z'),
