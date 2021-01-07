@@ -326,7 +326,7 @@ digraph astgraph {
   node148 -> node161
   node162 [label="opArith1"]
   node148 -> node162
-  node163 [label="<>"]
+  node163 [label=">="]
   node149 -> node163
   node164 [label="expr"]
   node149 -> node164
@@ -342,124 +342,116 @@ digraph astgraph {
   node155 -> node169
   node170 [label="expr"]
   node155 -> node170
-  node171 [label=";"]
-  node156 -> node171
-  node172 [label="listaComandos"]
-  node156 -> node172
-  node173 [label="'A'"]
-  node159 -> node173
-  node174 [label="opArith2"]
-  node159 -> node174
-  node175 [label="fator"]
-  node161 -> node175
-  node176 [label="term"]
-  node164 -> node176
-  node177 [label="opArith1"]
-  node164 -> node177
-  node178 [label="parecer"]
+  node171 [label="'A'"]
+  node159 -> node171
+  node172 [label="opArith2"]
+  node159 -> node172
+  node173 [label="fator"]
+  node161 -> node173
+  node174 [label="term"]
+  node164 -> node174
+  node175 [label="opArith1"]
+  node164 -> node175
+  node176 [label="parecer"]
+  node165 -> node176
+  node177 [label=":="]
+  node165 -> node177
+  node178 [label="expr"]
   node165 -> node178
-  node179 [label=":="]
-  node165 -> node179
-  node180 [label="expr"]
-  node165 -> node180
-  node181 [label=";"]
-  node166 -> node181
-  node182 [label="listaComandos"]
-  node166 -> node182
-  node183 [label="assignStmt"]
-  node167 -> node183
-  node184 [label="stmt_aux"]
-  node167 -> node184
-  node185 [label="term"]
-  node170 -> node185
-  node186 [label="opArith1"]
-  node170 -> node186
-  node187 [label="stmt"]
-  node172 -> node187
-  node188 [label="media"]
-  node175 -> node188
-  node189 [label="opArith2"]
-  node175 -> node189
-  node190 [label="fator"]
-  node176 -> node190
-  node191 [label="term"]
-  node180 -> node191
-  node192 [label="opArith1"]
-  node180 -> node192
-  node193 [label="stmt"]
-  node182 -> node193
-  node194 [label="parecer"]
-  node183 -> node194
-  node195 [label=":="]
-  node183 -> node195
-  node196 [label="expr"]
+  node179 [label=";"]
+  node166 -> node179
+  node180 [label="listaComandos"]
+  node166 -> node180
+  node181 [label="assignStmt"]
+  node167 -> node181
+  node182 [label="stmt_aux"]
+  node167 -> node182
+  node183 [label="term"]
+  node170 -> node183
+  node184 [label="opArith1"]
+  node170 -> node184
+  node185 [label="media"]
+  node173 -> node185
+  node186 [label="opArith2"]
+  node173 -> node186
+  node187 [label="fator"]
+  node174 -> node187
+  node188 [label="term"]
+  node178 -> node188
+  node189 [label="opArith1"]
+  node178 -> node189
+  node190 [label="stmt"]
+  node180 -> node190
+  node191 [label="parecer"]
+  node181 -> node191
+  node192 [label=":="]
+  node181 -> node192
+  node193 [label="expr"]
+  node181 -> node193
+  node194 [label=";"]
+  node182 -> node194
+  node195 [label="listaComandos"]
+  node182 -> node195
+  node196 [label="fator"]
   node183 -> node196
-  node197 [label=";"]
-  node184 -> node197
-  node198 [label="listaComandos"]
-  node184 -> node198
+  node197 [label="6"]
+  node187 -> node197
+  node198 [label="opArith2"]
+  node187 -> node198
   node199 [label="fator"]
-  node185 -> node199
+  node188 -> node199
   node200 [label="stmt_aux"]
-  node187 -> node200
-  node201 [label="6"]
-  node190 -> node201
-  node202 [label="opArith2"]
-  node190 -> node202
-  node203 [label="fator"]
-  node191 -> node203
-  node204 [label="stmt_aux"]
-  node193 -> node204
-  node205 [label="term"]
+  node190 -> node200
+  node201 [label="term"]
+  node193 -> node201
+  node202 [label="opArith1"]
+  node193 -> node202
+  node203 [label="stmt"]
+  node195 -> node203
+  node204 [label="("]
+  node196 -> node204
+  node205 [label="expr"]
   node196 -> node205
-  node206 [label="opArith1"]
+  node206 [label=")"]
   node196 -> node206
-  node207 [label="stmt"]
-  node198 -> node207
-  node208 [label="("]
+  node207 [label="opArith2"]
+  node196 -> node207
+  node208 [label="'A'"]
   node199 -> node208
-  node209 [label="expr"]
+  node209 [label="opArith2"]
   node199 -> node209
-  node210 [label=")"]
-  node199 -> node210
-  node211 [label="opArith2"]
-  node199 -> node211
-  node212 [label="'A'"]
-  node203 -> node212
-  node213 [label="opArith2"]
-  node203 -> node213
-  node214 [label="fator"]
-  node205 -> node214
-  node215 [label="stmt_aux"]
+  node210 [label="fator"]
+  node201 -> node210
+  node211 [label="stmt_aux"]
+  node203 -> node211
+  node212 [label="term"]
+  node205 -> node212
+  node213 [label="opArith1"]
+  node205 -> node213
+  node214 [label="/"]
+  node207 -> node214
+  node215 [label="fator"]
   node207 -> node215
-  node216 [label="term"]
-  node209 -> node216
-  node217 [label="opArith1"]
-  node209 -> node217
-  node218 [label="/"]
-  node211 -> node218
-  node219 [label="fator"]
-  node211 -> node219
-  node220 [label="'R'"]
-  node214 -> node220
-  node221 [label="opArith2"]
-  node214 -> node221
-  node222 [label="fator"]
-  node216 -> node222
-  node223 [label="+"]
-  node217 -> node223
-  node224 [label="term"]
-  node217 -> node224
-  node225 [label="2"]
-  node219 -> node225
-  node226 [label="x1"]
-  node222 -> node226
-  node227 [label="opArith2"]
-  node222 -> node227
-  node228 [label="fator"]
-  node224 -> node228
-  node229 [label="x2"]
-  node228 -> node229
-  node230 [label="opArith2"]
-  node228 -> node230
+  node216 [label="'R'"]
+  node210 -> node216
+  node217 [label="opArith2"]
+  node210 -> node217
+  node218 [label="fator"]
+  node212 -> node218
+  node219 [label="+"]
+  node213 -> node219
+  node220 [label="term"]
+  node213 -> node220
+  node221 [label="2"]
+  node215 -> node221
+  node222 [label="x1"]
+  node218 -> node222
+  node223 [label="opArith2"]
+  node218 -> node223
+  node224 [label="fator"]
+  node220 -> node224
+  node225 [label="x2"]
+  node224 -> node225
+  node226 [label="opArith2"]
+  node224 -> node226
 }
